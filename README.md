@@ -10,6 +10,18 @@ Languages
 > `c`  
 > `c++`
 
+
+Statistics
+----------
+
+*Problems solved:*   
+
+> `0`  out of `3415`   
+
+*Rank:*
+
+> `~5,000,000`
+
 More Information
 -----------------
 
