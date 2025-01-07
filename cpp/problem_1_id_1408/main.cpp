@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <iostream>
+#include <map>
 #include <string>
 #include <vector>
 
@@ -10,25 +11,32 @@ class Solution
     stringMatching (std::vector<std::string> &words)
     {
         std::vector<std::string> vector_to_return;
-        auto iterator = words.begin ();
-        auto end = words.end ();
 
-        while (iterator != end)
+        std::vector<std::string> temp = words;
+
+        std::sort (temp.begin (), temp.end ());
+
+        int size = temp.size ();
+
+        std::map<std::string, std::string> temp_map;
+
+        for (int i = 0; i < size; i++)
             {
-                std::string *iterator_ptr = &*iterator;
-                for (auto j : words)
-                    if (j != *iterator_ptr)
-                        if (iterator_ptr->find (j) != std::string::npos)
-                            {
-                                bool repeted = false;
-                                for (auto p : vector_to_return)
-                                    if (p == j)
-                                        repeted = true;
-                                if (!repeted)
-                                    vector_to_return.push_back (j);
-                            }
-                iterator++;
+                for (int j = 0; j < size; j++)
+                    if (words[i] != temp[j])
+                        {
+                            const auto pos = words[i].find (temp[j], 0);
+                            if (pos != std::string::npos)
+                                {
+                                    temp_map.insert (
+                                        std::pair<std::string, std::string> (
+                                            temp[j], temp[j]));
+                                }
+                        }
             }
+
+        for (auto pair : temp_map)
+            vector_to_return.push_back (pair.first);
 
         return std::move (vector_to_return);
     }
@@ -37,6 +45,7 @@ class Solution
 int
 main ()
 {
+
     std::vector<std::string> words;
     words.push_back ("leetcode");
     words.push_back ("as");
