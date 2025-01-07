@@ -1,0 +1,25 @@
+Tue Jan 7 5:09AM
+Lucca Labattaglia
+GITHUB: theargcoder
+
+We save the value of the count "k" in a private integer for later use.
+
+We copy the vectory and sort it.
+
+then when adding an int we use lower_bound to find the iterator thats greater than "val"
+
+then insert in that position val
+
+and finally we return the k position of the gratest to smallest sorted array
+
+
+
+WHY ITS INEFICIENT
+
+I didnt know std::priority_queue was even a thing.... LOL
+
+this is the perfect class to contain and solve this kind of problem due to the automatic sorting in insertion and O(1) access complexity.
+
+welll.... next time will have it as an option....
+
+

@@ -1,0 +1,33 @@
+Tue Jan 7 10:42 AM
+Lucca Labattaglia
+GITHUB: theargcoder
+
+
+First we declare the vector to return
+
+Then we copy the contents of the vector words and sort it.
+
+Now we create a std::map (its ordered) with key and value pair string
+
+Then we iterate through both temp and words
+
+Check to see if words[I] is equal to temp [I] if its not equal then we check if words contains substring temp[I]
+
+If its defined we insert into the map the key and value temp[I]
+
+Then we transcribe the map into the vector
+
+And return it.
+
+
+AFTER SEEING SOLUTION.....
+
+I didn't realize that to avoid duplicates we just push into array and break.
+
+Used std::map so duplicates were overwritten....
+
+Now the "leetcode" solution is nos as robust since they cannot count occurrences, I could therefore I thought of the problem beyond the constrains of it....
+
+Have to read the problem better.
+
+DONE
