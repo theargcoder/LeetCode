@@ -1,0 +1,19 @@
+Tue Jan 8 11:20 PM
+Lucca Labattaglia
+GITHUB: theargcoder
+
+First submission did it.
+
+Just a linked list nothing special.
+
+both add_two_recursive and add_single_recursive are 
+helper functions used to "traverse" the linked list
+
+In the Leetcode solution they did the same thing in
+a more compact way using ternary operators
+
+but the complexity of my solution is still
+"beats 100%" so just more verbose code where it 
+could've been simpler.
+
+nice.
