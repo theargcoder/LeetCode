@@ -1,0 +1,11 @@
+Tue Jan 8 11:20 PM
+Lucca Labattaglia
+GITHUB: theargcoder
+
+Not the most efficent solution.... O(n^2)
+
+In the most efficient solution they use a similar solution just with a hashmap (i belive)
+Interesting.... since they only loop though the string once.
+I do O(n^2) therefore the massive difference in time complexity.
+
+Will implement this in future solutions.
