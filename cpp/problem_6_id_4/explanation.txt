@@ -2,4 +2,15 @@ Tue Jan 9 4:47 PM
 Lucca Labattaglia
 GITHUB: theargcoder
 
+Divide and conquer algorithm but adapted to our specific case (medians)
 
+Now this is the fastest possible way of solving this problem
+
+Way way faster than the fastest proposed soulution by leetcode.
+Which has space O(n+m) time complexity 
+
+This divide and conquer solution has complexity of (O(log(min(n,m))))
+
+Therefore in massive arrays would make a massive difference.
+
+Proud of this solution, but it took me like a Day!!!

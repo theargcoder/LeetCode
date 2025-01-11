@@ -85,14 +85,6 @@ class Solution
                 int total = m + n;
                 int half = total / 2;
 
-                std::cout << '\n' << '\n';
-                std::cout << "m       " << m << '\n';
-                std::cout << "n       " << n << '\n';
-                std::cout << "total   " << total << '\n';
-                std::cout << "half    " << half << '\n';
-
-                std::cout << '\n' << '\n';
-
                 int left = 0, right = m;
 
                 while (left <= right)
@@ -100,20 +92,10 @@ class Solution
                         int i = (left + right) / 2; // Partition A
                         int j = half - i;           // Partition B
 
-                        std::cout << "left    " << left << '\n';
-                        std::cout << "right   " << right << '\n';
-                        std::cout << "i       " << i << '\n';
-                        std::cout << "j       " << j << '\n';
-
                         int Aleft = (i > 0) ? A[i - 1] : INT_MIN;
                         int Aright = (i < m) ? A[i] : INT_MAX;
                         int Bleft = (j > 0) ? B[j - 1] : INT_MIN;
                         int Bright = (j < n) ? B[j] : INT_MAX;
-
-                        std::cout << "Aleft   " << Aleft << '\n';
-                        std::cout << "Aright  " << Aright << '\n';
-                        std::cout << "Bleft   " << Bleft << '\n';
-                        std::cout << "Bright  " << Bright << '\n';
 
                         // Check if partition is valid
                         if (Aleft <= Bright && Bleft <= Aright)
@@ -126,7 +108,13 @@ class Solution
                                     }
                                 else
                                     {
-                                        return std::max (Aright, Bleft);
+                                        // Odd total: Return the max of the
+                                        // left partition
+
+                                        int left_max = std::max (Aleft, Bleft);
+                                        int right_min
+                                            = std::min (Aright, Bright);
+                                        return std::max (left_max, right_min);
                                     }
                             }
                         else if (Aleft > Bright)
@@ -227,32 +215,29 @@ main ()
 
     // Corrected Expected results
     std::vector<double> expected_results = {
-        5,  // test 1: {1, 2, 3, 4, 5, 6, 7, 8, 9} -> median is 5 (middle
-            // element)
-        5,  // test 2: {1, 2, 3, 5, 6, 7, 8, 4, 5, 6, 7, 8} -> median is 5
-            // (middle element)
-        7,  // test 3: {1, 3, 5, 7, 9, 11, 13, 2, 4, 6, 8, 10} -> median is 7
-        30, // test 4: {10, 20, 30, 40, 50, 60, 70, 80, 90} -> median is 30
-        55, // test 5: {10, 20, 30, 40, 50, 60, 70, 80, 95, 105} -> median is
-            // 55
-        6,  // test 6: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 6, 7, 8, 9} -> median is
-            // 6
-        9,  // test 7: {5, 6, 7, 8, 9, 10, 11, 12, 13, 14} -> median is 9
-        6,  // test 8: {3, 4, 5, 6, 7, 8, 9, 10} -> median is 6
-        9,  // test 9: {3, 5, 7, 9, 11, 13, 15} -> median is 9
-        1,  // test 10: {1, 1, 1, 1, 1, 1} -> median is 1
-        2,  // test 11: {2, 2, 2, 2, 2} -> median is 2
-        3,  // test 12: {0, 1, 2, 3, 4, 5, 6} -> median is 3
-        70, // test 13: {10, 11, 12, 13, 14, 15, 16, 17, 18} -> median is 70
-        170,   // test 14: {100, 200, 300, 400, 500} -> median is 170
-        103,   // test 15: {100, 101, 102, 103, 104, 105, 106} -> median is 103
-        55,    // test 16: {11, 22, 33, 44, 55, 66, 77} -> median is 55
-        60,    // test 17: {10, 30, 50, 70, 90} -> median is 60
-        1000,  // test 18: {1, 10, 100, 1000, 10000} -> median is 1000
-        22,    // test 19: {13, 16, 19, 22, 25} -> median is 22
-        15000, // test 20: {1000, 2000, 3000, 4000, 5000, 6000} -> median is
-               // 15000
+        5,     // testcase 0
+        6,     // testcase 1
+        6.5,   // testcase 2
+        55,    // testcase 3
+        62.5,  // testcase 4
+        8,     // testcase 5
+        10,    // testcase 6
+        7.5,   // testcase 7
+        9,     // testcase 8
+        1.5,   // testcase 9
+        6,     // testcase 10
+        4,     // testcase 11
+        17.5,  // testcase 12
+        185,   // testcase 13
+        103.5, // testcase 14
+        55,    // testcase 15
+        55,    // testcase 16
+        5500,  // testcase 17
+        19.5,  // testcase 18
+        5000,  // testcase 19
     };
+
+    std::vector<bool> results;
     for (size_t i = 0; i < test_nums1.size (); ++i)
         {
             std::vector<int> nums1 = test_nums1[i];
@@ -287,7 +272,8 @@ main ()
             std::cout << "  Seconds: " << elapsed_s.count () << " s\n";
 
             // Check if the median and expected result are equal
-            if (ret == expected_results[i])
+            results.push_back (ret == expected_results[i]);
+            if (results[i])
                 {
                     std::cout << "\n\n" << "  EQUAL\n";
                 }
@@ -297,6 +283,13 @@ main ()
                 }
 
             std::cout << "-----------------------------------\n";
+        }
+    int counter = 0;
+    for (auto i : results)
+        {
+            counter++;
+            std::string str = (i) ? "CORRECT" : "INCORRECT";
+            std::cout << "test " << counter << " is " << str << '\n';
         }
     return 0;
 }
