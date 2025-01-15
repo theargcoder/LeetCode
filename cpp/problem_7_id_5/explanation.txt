@@ -2,15 +2,11 @@ Tue Jan 9 4:47 PM
 Lucca Labattaglia
 GITHUB: theargcoder
 
-Divide and conquer algorithm but adapted to our specific case (medians)
+Initially my solution had complexity of O(n^3) witch was far too complex for it to even be
+submit worthy...
+After some googling found out about Manacher’s Algorithm which is a way of solving this
+problem with O(n) complexity....
+Not going to lie the logic is kinda brutal...
+I dont see this very applicable in any real world situation but here we are...
 
-Now this is the fastest possible way of solving this problem
-
-Way way faster than the fastest proposed soulution by leetcode.
-Which has space O(n+m) time complexity 
-
-This divide and conquer solution has complexity of (O(log(min(n,m))))
-
-Therefore in massive arrays would make a massive difference.
-
-Proud of this solution, but it took me like a Day!!!
+bye bye
