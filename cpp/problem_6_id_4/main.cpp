@@ -76,7 +76,7 @@ class Solution
         int n_size = nums2.size ();
 
         if (m_size != 0 && n_size != 0)
-            {
+            { // both nums1 and nums2 have size non zero
                 const std::vector<int> &A = (m_size < n_size) ? nums1 : nums2;
                 const std::vector<int> &B = (m_size < n_size) ? nums2 : nums1;
 
@@ -101,16 +101,14 @@ class Solution
                         if (Aleft <= Bright && Bleft <= Aright)
                             {
                                 if ((total % 2) == 0)
-                                    {
-                                        return (std::max (Aleft, Bleft)
-                                                + std::min (Aright, Bright))
-                                               / 2.0;
+                                    { // meaning total is even
+                                        int left_max = std::max (Aleft, Bleft);
+                                        int right_max
+                                            = std::min (Aright, Bright);
+                                        return (left_max + right_max) / 2.0;
                                     }
                                 else
-                                    {
-                                        // Odd total: Return the max of the
-                                        // left partition
-
+                                    { // total isn't even
                                         int left_max = std::max (Aleft, Bleft);
                                         int right_min
                                             = std::min (Aright, Bright);
@@ -128,7 +126,7 @@ class Solution
                     }
             }
         else if (m_size != 0 && n_size == 0)
-            {
+            { // nums1 has size non zero but nums2 has size 0
                 if ((m_size % 2) == 0)
                     {
                         return (nums1[(m_size / 2) - 1]
@@ -141,7 +139,7 @@ class Solution
                     }
             }
         else if (m_size == 0 && n_size != 0)
-            {
+            { // nums2 has size non zero but nums1 has size 0
                 if ((n_size % 2) == 0)
                     {
                         return (nums2[(n_size / 2) - 1]
@@ -154,10 +152,10 @@ class Solution
                     }
             }
         else
-            {
+            { // case when both nums1 and nums2 have size 0..... BAD
                 return 0.0;
             }
-        return 0.0;
+        return 0.0; // to avoid compiler warking (compilers love to complain)
     }
 };
 
