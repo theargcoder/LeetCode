@@ -20,7 +20,11 @@ class Solution
         std::string container[numRows];
 
         for (int i = 0; i < numRows; i++)
-            container[i] += s[i];
+            {
+                std::string temp_str;
+                temp_str += s[i];
+                container[i] = std::string (temp_str);
+            }
 
         int L = numRows - 2;
         bool add = false;

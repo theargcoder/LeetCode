@@ -1,5 +1,24 @@
-Tue Jan 9 4:47 PM
+Tue Jan 14 8:46 PM
 Lucca Labattaglia
 GITHUB: theargcoder
 
+Algorithm is O(n)
+
+Pushing into result is O(n) too I belive
+
+making the overall complexity O(n^2)
+
+weridly enugh not initializing the strings in the 
+loop were the array "container" gets pushed the first 
+i chars (limited by numrows) makes this 300% slower
+No clue why, my theory is that since string "temp_str"
+is created in the stack of the loop, this one gets
+overwritten and no need of constructor
+Assuming that the compiler is doing GOD
+level optimizations.....
+
+Also using std::move in the last loop makes it also 1-3 ms 
+slower IDK why..... no clue;
+
+anyways pretty simple problem peace out
 

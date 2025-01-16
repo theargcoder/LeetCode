@@ -1,0 +1,22 @@
+Tue Jan 14 8:47 PM
+Lucca Labattaglia
+GITHUB: theargcoder
+
+My computer engineering mind tried solving this by
+
+1. converting the int to BCD
+2. inversing the BCD (aka MSB = LSB until LSB = MSB) 
+3. re signing the integer if it was negative
+4. re-encoding the BCD into raw binary or 2's compliment
+5. returning the re-encoded.
+
+this solution would've worked if C let you do bit to bit comparasions
+and comparing sections of the register like you can do in assembly or
+verilog. 
+This solution woulve been REALLY REALLY fast since its only 42
+CPU cycles for the encoding, 14 for the inversing, and 14 for
+the re-encoding into binary and an extra 1 for the case where input
+is negative.
+
+sadly couldn't figure out how to do this in C or C++... 
+
