@@ -1,0 +1,22 @@
+Tue Jan 14 8:47 PM
+Lucca Labattaglia
+GITHUB: theargcoder
+
+simple solution....
+pretty much same as word palindrome checking....
+this is not the most efficeint way of doing it
+I though about doing it arithmetically bit didn't 
+reach a conclusion that i was sure that would work
+
+once again if C had assembly level of bitwise control
+I could BCD encode the number and do this in ~60 ish
+cpu cycles.
+
+This would be ORDERS OF MAGNITUDE faster than their
+proposed solution since no division would take place
+only double dabble algorithm.....
+
+YOU KNOW WHAT I'll solve it in assembly (ARM 64)
+just becuase i can.......
+will be attached the main.asm file for the curious.
+
