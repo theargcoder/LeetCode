@@ -1,0 +1,13 @@
+2025-01-20 19:23
+Lucca Labattaglia
+GITHUB: theargcoder
+
+Easiest problem by far....
+First solution paseed all my tests but for some odd reason it 
+decided to take too long to complete....
+my solution was O(N^2) complexity
+and their expected was O(n) therefore 
+I had a "time exceeded" message when submitting it.
+
+It is what it is....
+
