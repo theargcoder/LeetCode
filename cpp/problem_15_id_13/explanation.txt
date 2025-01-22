@@ -1,0 +1,17 @@
+2025-01-21 23:10
+Lucca Labattaglia
+GITHUB: theargcoder
+
+pretty clean solution
+took me like 10 mins to realize my initial approach was WAY too complex
+it eventually clicked
+Don't do leetcode problems after studing 11 hours......
+No bueno
+
+Regardless my solution has O(n) time complexity
+Very nice and redable, unlike some of the leetcode proposed solutions.... 
+(yes thats me hating btw)
+the proposed fastest solution is kinda ugly and too many switch statemets
+for my liking.
+
+Kudos !!
