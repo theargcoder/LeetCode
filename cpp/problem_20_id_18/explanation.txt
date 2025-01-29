@@ -1,0 +1,16 @@
+2025-01-29 00:48
+Lucca Labattaglia
+GITHUB: theargcoder
+
+talk about the most BS error in my life on my first submission....
+THE ALGO WORKED LIKE MAGIC, PERFECTLY
+but a INT_MAX + INT_MAX caused overflow....... so it told me to 
+fuck off...........
+GTFO like cmon bruh, anyhow, should've though of that testcase..
+my fault....
+
+anyhow, its the same thing as 3 sum just with a combination of the 
+logic for the closest 3 sum thingy, easy ngl....
+bye.
+
+theargcoder.
