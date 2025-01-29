@@ -1,0 +1,16 @@
+2025-01-28 00:23
+Lucca Labattaglia
+GITHUB: theargcoder
+
+passed on the first try!!!!
+
+pretty interesting problem....
+though it would be easy at first then realized i needed to do "n" loops
+based on the size of the input (aka numb of digits)
+good thing i did my JSON (CJPARSE) library so i got the infinit recursion
+stuff pretty at bay!!!
+
+anyhow bye
+LUCCA
+aka argcoder
+out
