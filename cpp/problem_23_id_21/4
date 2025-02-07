@@ -1,0 +1,48 @@
+#include <iostream>
+#include <vector>
+
+struct ListNode
+{
+    int val;
+    ListNode *next;
+    ListNode () : val (0), next (nullptr) {}
+    ListNode (int x) : val (x), next (nullptr) {}
+    ListNode (int x, ListNode *next) : val (x), next (next) {}
+};
+
+class Solution
+{
+  public:
+    ListNode *
+    mergeTwoLists (ListNode *list1, ListNode *list2)
+    {
+        if (list1 == nullptr && list2 == nullptr)
+            return nullptr;
+        if (list1 == nullptr && list2 != nullptr)
+            return list2;
+        if (list1 != nullptr && list2 == nullptr)
+            return list2;
+
+        ListNode *head, *curr;
+        bool smaller = list1->val < list2->val;
+        if (smaller)
+            {
+                head = list1;
+                curr = list2;
+                head->next = curr;
+                std::cout << "head-> val = " << head->val << '\n';
+            }
+        else
+            {
+                head = list2;
+                curr = list1;
+                head->next = curr;
+                std::cout << "head-> val = " << head->val << '\n';
+            }
+      
+        while (list2 != nullptr) {
+        
+        }
+        return head;
+    }
+};
