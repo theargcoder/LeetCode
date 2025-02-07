@@ -1,0 +1,14 @@
+2025-02-06 23:28
+Lucca Labattaglia
+GITHUB: theargcoder
+
+good worked on first try
+simple once i realized that that the problem states the Nth NODE 
+FROM THE END NOT FROM THE HEAD i wasted like 30 minutes
+trying to figure out why it didn't work LOL
+
+simple enough just iterate n times until you reached the NODE
+you want to delete and unlink it by making the prev point 
+to the next one of the current.
+
+out.
