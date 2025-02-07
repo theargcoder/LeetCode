@@ -1,0 +1,12 @@
+2025-02-07 11:33
+Lucca Labattaglia
+GITHUB: theargcoder
+
+it took a lot more brainpower than expected, passed all test in first submition
+by creating a buffer, we add the open brakets and check them in reverse order
+if they are not matching open and close we return false, otherwise eliminate
+the last element of the buffer.
+
+btw it can never be true if the size of str is odd....
+
+theargcoder.
