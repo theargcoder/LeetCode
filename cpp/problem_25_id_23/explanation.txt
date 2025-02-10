@@ -1,0 +1,12 @@
+2025-02-10 17:47
+Lucca Labattaglia
+GITHUB: theargcoder
+
+not the fastest solution but it works very well
+Its kinda slow since it re sorts on every ith iteration.
+but regardless it works since its a compound 
+version of the original merge 2 lists solution
+
+anyhow
+out.
+argcoder
