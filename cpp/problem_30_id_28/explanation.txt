@@ -1,0 +1,12 @@
+2025-02-11 14:57
+Lucca Labattaglia
+GITHUB: theargcoder
+
+the last 5 problems have been suspisusly easy
+regardless we find the string by std::find()
+we store the value in a size_t (find return size t)
+then if its valid we cast it to the int to return
+if its not then to -1 like stated in the problem
+
+bye
+theargcoder
