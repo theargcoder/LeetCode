@@ -1,0 +1,11 @@
+2025-02-10 20:19
+Lucca Labattaglia
+GITHUB: theargcoder
+
+idk why I took 2 hours with this....... LOL
+simple, same concept as Merge2Lists form problem id 21
+But in this case just need to relink, rehead, relink 
+endlessly.
+Did it on first submission.
+
+argcoder
