@@ -1,0 +1,14 @@
+2025-02-11 12:16
+Lucca Labattaglia
+GITHUB: theargcoder
+
+same logic as the problem id "24"
+just with the little detail of been k size order swaps.
+just trow it in a vector and recursively apply the swapping logic
+
+I am MAD, i accidentally sent a non woking submission because 
+I TYPED "cmmd + 'enter'" FUCK ME 
+
+Anyhow
+
+argcoder.
