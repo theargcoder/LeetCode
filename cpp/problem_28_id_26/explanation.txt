@@ -1,0 +1,13 @@
+2025-02-11 14:28
+Lucca Labattaglia
+GITHUB: theargcoder
+
+talk about a strange problem.......
+anyhow, we just create a new vector that contains
+the non repeated digits, then we make nums equal
+to the new vector in the first "count"  positions.
+later we return the size of the new vector and 
+call it a day
+
+bye
+theargcoder
