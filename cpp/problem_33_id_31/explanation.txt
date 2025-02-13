@@ -1,0 +1,20 @@
+2025-02-12 21:00
+Lucca Labattaglia
+GITHUB: theargcoder
+
+BROOOO my first submission was wrong because i assuemed that 
+REPEATS were not ALLOWED, mfw they ended up been legal....
+anyhow, altered the algo to account for repeats in any position,
+this is a simple problem, we iterate until we find something
+sorted in either ascending or descending order, form there if
+its descending order we simply swap the last 2 values
+THAT ARE NOT REPEATS (*boring...*) 
+if they are in ascending order, we find the last element
+greater than the previous position of begging of sorted section and 
+we simply swap these and sort IN descending order form beegining of
+the former ascending order sorted position till the end.
+and VOILA it works......
+
+out. 
+theargcoder
+
