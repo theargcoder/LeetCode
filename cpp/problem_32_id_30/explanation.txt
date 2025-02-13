@@ -1,0 +1,15 @@
+2025-02-12 18:04
+Lucca Labattaglia
+GITHUB: theargcoder
+
+made a working solution but "time limit exceeded"
+ok.......
+regardless tryied the GITHUB SOLUTION
+AND IT DIDN'T work EITHER WTF
+had to change it up, and it was still slow as ASF
+
+anyhow the fastest working solution is way more efficient
+than my original one (its commented) regardless sad to see it fail.
+
+out.
+argcoder
