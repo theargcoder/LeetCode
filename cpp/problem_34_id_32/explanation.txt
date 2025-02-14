@@ -1,0 +1,23 @@
+2025-02-13 20:09
+Lucca Labattaglia
+GITHUB: theargcoder
+
+well talk about overcomplicating things......
+the funny thing is that my code esencially does the same
+thing just with 100 extra steps.....
+still fast, still works so not commplaining
+will admit it took me a little longer than it should've
+
+anyhow, we map sequencial pairs "()" as 0
+"(" as a pending (to be matched) incremented
+and ")" the pending # n was matched so decrease pending by 1
+then we find the largest sequence of valid pendings and call it a day 
+if (pending hits 0) we push any ")" as a -1 so we can delimit the sum
+by those -1s 
+all any number non zero has ofc a wheigh of 1 and 0's have weigh of 2.
+
+overengineered... but i could parse my stuff their soulution only counts
+(i think don't quote me not too sure)
+
+out.
+theargcoder
