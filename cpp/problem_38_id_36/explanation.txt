@@ -1,0 +1,11 @@
+2025-02-26 11:34
+Lucca Labattaglia
+GITHUB: theargcoder
+
+check both rows and columns on the first loop, using a buffer and string.find
+of course if there are repeats we return false.
+same with the 3x3 boards but the trick is in the math to get the actual 3x3 board.
+the process is the same with a std::string buffer and string.find to validate the board
+
+theargcoder
+out.
