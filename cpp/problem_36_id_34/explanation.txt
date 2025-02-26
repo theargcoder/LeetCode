@@ -1,0 +1,16 @@
+2025-02-25 23:05
+Lucca Labattaglia
+GITHUB: theargcoder
+
+tbh wasn't hard either.... 
+maybe I am cracked today!!
+math people call it bisection method
+cs people call it binary search
+stategist call it divide and conquer
+call it all of them.
+not much to explain since both 'lower_bound'
+and 'upper_bound' are well documented std
+funcitons its quite intuative tbh
+
+theargcoder.
+out.
