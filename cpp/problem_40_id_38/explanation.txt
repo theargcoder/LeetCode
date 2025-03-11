@@ -1,0 +1,7 @@
+2025-03-11 12:41
+Lucca Labattaglia
+GITHUB: theargcoder
+
+not too complex, also its not the most efficient method due to the fact that i am calling a function every iteration of the while loop, thats is calles n - 1 times, so table function lookup and bound checking every time so yea its not the most efficient but super redable and understandable so I am proud of it!
+
+
