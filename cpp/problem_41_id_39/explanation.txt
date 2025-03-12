@@ -1,0 +1,11 @@
+2025-03-12 12:50
+Lucca Labattaglia
+GITHUB: theargcoder
+
+simple but complicated at the same time....
+did a solution that was MEGA slow but it worked....
+
+then realized that my backtracking was hot garbage
+so yea it eventually clicked....
+
+theargcoder
