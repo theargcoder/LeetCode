@@ -1,0 +1,10 @@
+2025-03-12 14:19
+Lucca Labattaglia
+GITHUB: theargcoder
+
+proud of this one (same as previous to be honest)
+by using upper_bound, it takes a little longer than using,
+pure indexing sum and comparasion so yea....
+but still very good tbh.
+
+theargcoder
