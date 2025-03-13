@@ -1,0 +1,12 @@
+2025-03-12 18:07
+Lucca Labattaglia
+GITHUB: theargcoder
+
+talk about a shitshow idk how
+did 3 submissions were the "sorting" algo was not properlly sorting
+well forced it to work via making it loop 5 times :)
+this was just missing the " && nums[nums[i] - 1] != nums[i]"
+in the if statement to be perfect......
+o well.
+
+theargcoder
