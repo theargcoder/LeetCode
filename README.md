@@ -7,7 +7,6 @@ This is a repository for my LeetCode problem solutions
 Languages
 ---------
 
-> `c`  
 > `c++`
 
 
@@ -16,15 +15,15 @@ Statistics
 
 *Problems solved:*   
 
-> `31`  out of `3450`
+> `44`  out of `3450`
 
 *Acceptance:*
 
-> `56.82%`
+> `58.04%`
 
 *Rank:*
 
-> `2,644,536`
+> `2,131,276`
 
 More Information
 -----------------
