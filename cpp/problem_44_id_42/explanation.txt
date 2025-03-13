@@ -1,0 +1,14 @@
+2025-03-12 21:19
+Lucca Labattaglia
+GITHUB: theargcoder
+
+bruh on my first submition i got a nasty 
+runtime error because of an uninitialized int (named 'max')
+anyhow, not the best solution since it takes O(n^2) vs the
+proposed 0 ms solution that takes O(n), but in my defense,
+my solution is MEMORY EFFICIENT ASF;
+pretty interesting solution they propose in the 0m ssubmition 
+
+still proud of it even if it takes for ever to do this!!
+
+theargcoder
