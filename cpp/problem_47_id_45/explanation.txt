@@ -1,0 +1,17 @@
+2025-03-14 17:59
+Lucca Labattaglia
+GITHUB: theargcoder
+
+proud of this one!!
+hand crafted segfault by segfault
+
+the algorithm is simple, it computes the "longest"
+we can take by computing the current pos + the jump possible length.
+if the current is the longest then we update the new position;
+but we dont halt yet, we keep looking if in the range of the current
+step we can find another longest (or equal to) step.
+does so recursively until reaching the end.
+
+finnito
+
+theargcoder
