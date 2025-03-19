@@ -1,0 +1,16 @@
+2025-03-19 03:32
+Lucca Labattaglia
+GITHUB: theargcoder
+
+did a working but slow solution by cheatingISH (using a std::set<> lol)
+hey but after some time figured out that the once the algo finds 
+2 nums == on distinct positions, it continues BUT what took me long
+to figure out to pass my test cases is how to tell it to continue 
+with the combination given that because there was 2 == numbs in
+the first or second iteration that doesnt mean that a valid permutation
+can't be found there.... 
+TOOK ME WAY TO LONG TO REALIZE I JUST NEEDED TO DO SOME SWAPING IN REVERSE
+
+ANYHOW
+
+theargcoder

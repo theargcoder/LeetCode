@@ -1,7 +1,12 @@
-
+2025-03-19 00:42
 Lucca Labattaglia
 GITHUB: theargcoder
 
+simple, just use the "next_permutation" function form problem id 31 (i think)
+and do so n! times.
 
+so the complexity is sizearray permutations * sizearray! 
+
+aka O(n * n!);
 
 theargcoder
