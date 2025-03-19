@@ -1,0 +1,26 @@
+2025-03-19 22:39
+Lucca Labattaglia
+GITHUB: theargcoder
+
+well well, started by using a while loop that took O(N)
+talk about shitty code right there
+
+then realized that when i used std::pow() it took 100 ish micoseconds
+that offended my 1920 MILLISECOND solution to its core so i went to 
+wikepedia where i learned that we can do log(N) powers by squaring the base.....
+I WAS OFFENDED, SAD and PISSED OFF at myself since i could've
+probably
+figured it out if I used excalidraw and some 10 minutes of brain power....
+anyhow my solution is faster than the wikepedia bc i improved it
+
+it divides by 2 using a bitwise shift of 1 bit to the RIGHT 
+aka the in the direction of the LSB 
+(if the convention is left = MSB and right = LSB) (whitch normal people use)
+
+also removed the modulus operation to check if there was a bit at the end
+and replaced it with a good old bitwise AND with the beloved 0x1
+aka (00000000000000000000000001) 
+
+
+
+theargcoder
