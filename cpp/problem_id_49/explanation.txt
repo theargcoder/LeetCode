@@ -1,25 +1,16 @@
-2025-03-19 05:57
+2025-03-19 20:56
 Lucca Labattaglia
 GITHUB: theargcoder
 
+did 2 good solutions without using std::unordered_map.....
+FORGOT THAT YOU CAN HASH A STRING LOLLLLLL
+ANYHOW
 
-my face when I remembered that transposing a matrix is easy asf......
-anyhow my solution is very elegant and super easy to understand
-so we imagine a circle with layers, if you want to rotate it 90 deg
-clockwise all the layers have to follow
-so using std::swap we do a little cordinate system to keep swaping the layers
-and voila
-4 swaps per location in a layer, where a layer is nums[i].size()
-and we do has nums[i].size() - 1 - depth of layers
+much faster to use that instead of the manual O(n^2)
+to compare every string/key.........
 
-interesting to think i was trying to transpose the matrix but 
-my brain went otherwise.......
-still a 0ms solution, no complicated looping or break statements
-no memory usage at all literally 8 bytes and some change....
-and std::swap that should use std::move
-
-I will admit this method isnt the most efficient if you want to do more 
-than rotate it...
-
+then using the unordered_map but instead of hashing the string
+we hash the frecuency count of chars, since its sorted its easy to do
+pretty fast about O(n) ish.
 
 theargcoder
