@@ -1,0 +1,25 @@
+2025-03-19 05:57
+Lucca Labattaglia
+GITHUB: theargcoder
+
+
+my face when I remembered that transposing a matrix is easy asf......
+anyhow my solution is very elegant and super easy to understand
+so we imagine a circle with layers, if you want to rotate it 90 deg
+clockwise all the layers have to follow
+so using std::swap we do a little cordinate system to keep swaping the layers
+and voila
+4 swaps per location in a layer, where a layer is nums[i].size()
+and we do has nums[i].size() - 1 - depth of layers
+
+interesting to think i was trying to transpose the matrix but 
+my brain went otherwise.......
+still a 0ms solution, no complicated looping or break statements
+no memory usage at all literally 8 bytes and some change....
+and std::swap that should use std::move
+
+I will admit this method isnt the most efficient if you want to do more 
+than rotate it...
+
+
+theargcoder
