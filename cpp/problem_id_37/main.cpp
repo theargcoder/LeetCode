@@ -1,5 +1,8 @@
 #include <cassert>
+#include <chrono>
+#include <future>
 #include <iostream>
+#include <thread>
 #include <unordered_map>
 #include <utility>
 #include <vector>
@@ -451,6 +454,7 @@ class Solution
 
 // CHAT GPTS SOLUTION AMAZING STUFF TBH
 // Optimized Sudoku Solver using bitmask, MRV, and incremental propagation.
+/*
 class Solution
 {
   public:
@@ -571,12 +575,223 @@ class Solution
         return false;
     }
 };
+*/
+
+class Solution
+{
+  public:
+    void
+    solveSudoku (std::vector<std::vector<char>> &board)
+    {
+        unsigned short options[9][9];
+        unsigned short MASK = 0b0000000111111111, SEL;
+
+        std::fill (&options[0][0], &options[0][0] + 81, MASK);
+
+        unsigned char i, j;
+        static const unsigned char ID[9] = { 0, 0, 0, 3, 3, 3, 6, 6, 6 };
+        unsigned char x, y, p = 0, q = 0;
+
+        for (i = 0; i < 9; i++)
+            {
+                for (j = 0; j < 9; j++)
+                    {
+                        if (board[i][j] != '.')
+                            {
+                                SEL = (board[i][j] - '1');
+                                options[i][j] &= (1 << SEL);
+                            }
+                        else
+                            {
+                                for (x = 0; x < 9; x++)
+                                    {
+                                        SEL = (board[i][x] - '1');
+                                        options[i][j] &= ~(1 << SEL);
+                                        SEL = (board[x][j] - '1');
+                                        options[i][j] &= ~(1 << SEL);
+                                    }
+                            }
+                    }
+            }
+        for (i = 0; i < 9; i += 3)
+            {
+                for (j = 0; j < 9; j += 3)
+                    {
+                        for (y = ID[i]; y < ID[i] + 3; y++)
+                            {
+                                for (x = ID[j]; x < ID[j] + 3; x++)
+                                    {
+                                        if (board[y][x] != '.')
+                                            continue;
+
+                                        SEL = (board[y][x] - '1');
+                                        options[y][x] &= ~(1 << SEL);
+                                    }
+                            }
+                    }
+            }
+
+        for (i = 0; i < 9; i++)
+            {
+                for (j = 0; j < 9; j++)
+                    {
+                        std::cout << "@ [i, j] = [" << (int)i << ',' << (int)j
+                                  << "]  ";
+                        std::cout << "we have options = "
+                                  << std::bitset<16> (options[i][j]) << '\n';
+                    }
+            }
+
+        backtrack (board, options, MASK, i, j, x, y, ID, p, q);
+    }
+
+  private:
+    void
+    backtrack (std::vector<std::vector<char>> &board,
+               unsigned short (&options)[9][9], unsigned short &MASK,
+               unsigned char &i, unsigned char &j, unsigned char &x,
+               unsigned char &y, const unsigned char (&ID)[9],
+               unsigned char &p, unsigned char &q)
+    {
+        if (p >= 9)
+            return;
+
+        if (q >= 9)
+            {
+                p++;
+                q = 0;
+                backtrack (board, options, MASK, i, j, x, y, ID, p, q);
+                if (p >= 9)
+                    return;
+                p--;
+                return;
+            }
+        for (unsigned char r = 0; r < 9; r++)
+            {
+                if (!(options[p][q] & (1 << r)))
+                    continue;
+
+                board[p][q] = '1' + r;
+
+                if (validate (board, options, MASK, i, j, x, y, ID, p, q, r))
+                    {
+                        std::cout << "backtrack Sudoku:\n";
+                        for (int i = 0; i < 9; i++)
+                            {
+                                for (int j = 0; j < 9; j++)
+                                    {
+                                        std::cout << board[i][j] << " ";
+                                        if (j == 2 || j == 5)
+                                            std::cout << "  ";
+                                    }
+                                std::cout << "\n";
+                                if (i == 2 || i == 5)
+                                    std::cout << "\n";
+                            }
+                        for (i = 0; i < 9; i++)
+                            {
+                                for (j = 0; j < 9; j++)
+                                    {
+                                        std::cout << "@ [i, j] = [" << (int)i
+                                                  << ',' << (int)j << "]  ";
+                                        std::cout
+                                            << "we have options = "
+                                            << std::bitset<16> (options[i][j])
+                                            << '\n';
+                                    }
+                            }
+                        q++;
+                        backtrack (board, options, MASK, i, j, x, y, ID, p, q);
+                        if (p >= 9)
+                            return;
+                        q--;
+
+                        for (i = 0; i < 9; i++)
+                            {
+                                options[p][i] |= (1 << r);
+                                options[i][q] |= (1 << r);
+                            }
+
+                        for (y = ID[p]; y < ID[p] + 3; y++)
+                            {
+                                for (x = ID[q]; x < ID[q] + 3; x++)
+                                    {
+                                        options[y][x] |= (1 << r);
+                                    }
+                            }
+                    }
+            }
+        if (q >= 8)
+            {
+                q = 0;
+                backtrack (board, options, MASK, i, j, x, y, ID, p, q);
+            }
+        return;
+    }
+
+    bool
+    validate (std::vector<std::vector<char>> &sudoku,
+              unsigned short (&options)[9][9], unsigned short &MASK,
+              unsigned char &i, unsigned char &j, unsigned char &x,
+              unsigned char &y, const unsigned char (&ID)[9],
+              const unsigned char &p, const unsigned char &q,
+              const unsigned char &r)
+    {
+
+        for (i = 0; i < q; i++)
+            {
+                if (sudoku[p][i] == sudoku[p][q])
+                    {
+                        options[p][q] &= ~(1 << r);
+                        return false;
+                    }
+            }
+        for (j = 0; j < p; j++)
+            {
+                if (sudoku[j][q] == sudoku[p][q])
+                    {
+                        options[p][q] &= ~(1 << r);
+                        return false;
+                    }
+            }
+        for (y = ID[p]; y < p; y++)
+            {
+                for (x = ID[q]; x < q; x++)
+                    {
+                        if (sudoku[y][x] == sudoku[p][q])
+                            {
+                                options[y][x] &= ~(1 << r);
+                                return false;
+                            }
+                    }
+            }
+
+        // we make the next iteration make the latests selection count as valid
+        // option
+
+        for (i = 0; i < 9; i++)
+            {
+                options[p][i] &= ~(1 << r);
+                options[i][q] &= ~(1 << r);
+            }
+
+        for (y = ID[p]; y < ID[p] + 3; y++)
+            {
+                for (x = ID[q]; x < ID[q] + 3; x++)
+                    {
+                        options[y][x] &= ~(1 << r);
+                    }
+            }
+
+        return true;
+    }
+};
 
 int
 main ()
 {
     // Example Sudoku board (empty cells as '.')
-    std::vector<std::vector<char> > board
+    std::vector<std::vector<char>> board
         = { { '5', '3', '.', '.', '7', '.', '.', '.', '.' },
             { '6', '.', '.', '1', '9', '5', '.', '.', '.' },
             { '.', '9', '8', '.', '.', '.', '.', '6', '.' },
@@ -590,8 +805,34 @@ main ()
 
     // Start measuring time
     auto start = std::chrono::high_resolution_clock::now ();
+    // Print input board
+    std::cout << "input Sudoku:\n";
+    for (int i = 0; i < 9; i++)
+        {
+            for (int j = 0; j < 9; j++)
+                {
+                    std::cout << board[i][j] << " ";
+                    if (j == 2 || j == 5)
+                        std::cout << "  ";
+                }
+            std::cout << "\n";
+            if (i == 2 || i == 5)
+                std::cout << "\n";
+        }
 
-    solver.solveSudoku (board);
+    std::future<void> future = std::async (
+        std::launch::async, &Solution::solveSudoku, &solver, std::ref (board));
+
+    // Wait for 1 second, then check if it's done
+    if (future.wait_for (std::chrono::seconds (1))
+        == std::future_status::ready)
+        {
+            future.get (); // Get the result if finished
+        }
+    else
+        {
+            std::cout << "Timeout: Sudoku solving took too long!" << std::endl;
+        }
 
     // Stop measuring time
     auto stop = std::chrono::high_resolution_clock::now ();
