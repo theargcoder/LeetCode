@@ -590,177 +590,106 @@ class Solution
 
         unsigned char i, j;
         static const unsigned char ID[9] = { 0, 0, 0, 3, 3, 3, 6, 6, 6 };
-        unsigned char x, y, p = 0, q = 0;
+        unsigned char x, y;
 
-        for (i = 0; i < 9; i++)
+        for (j = 0; j < 9; j++)
             {
-                for (j = 0; j < 9; j++)
+                for (i = 0; i < 9; i++)
                     {
-                        if (board[i][j] != '.')
+                        if (board[j][i] != '.')
                             {
-                                SEL = (board[i][j] - '1');
-                                options[i][j] &= (1 << SEL);
+                                SEL = (board[j][i] - '1');
+                                options[j][i] &= (1 << SEL);
                             }
                         else
                             {
                                 for (x = 0; x < 9; x++)
                                     {
-                                        SEL = (board[i][x] - '1');
-                                        options[i][j] &= ~(1 << SEL);
-                                        SEL = (board[x][j] - '1');
-                                        options[i][j] &= ~(1 << SEL);
+                                        if (x != i && board[j][x] != '.')
+                                            {
+                                                SEL = (board[j][x] - '1');
+                                                options[j][i] &= ~(1 << SEL);
+                                            }
+                                        if (x != j && board[x][i] != '.')
+                                            {
+                                                SEL = (board[x][i] - '1');
+                                                options[j][i] &= ~(1 << SEL);
+                                            }
                                     }
-                            }
-                    }
-            }
-        for (i = 0; i < 9; i += 3)
-            {
-                for (j = 0; j < 9; j += 3)
-                    {
-                        for (y = ID[i]; y < ID[i] + 3; y++)
-                            {
-                                for (x = ID[j]; x < ID[j] + 3; x++)
+                                for (y = ID[j]; y < ID[j] + 3; y++)
                                     {
-                                        if (board[y][x] != '.')
-                                            continue;
+                                        for (x = ID[i]; x < ID[i] + 3; x++)
+                                            {
+                                                if (board[y][x] == '.')
+                                                    continue;
 
-                                        SEL = (board[y][x] - '1');
-                                        options[y][x] &= ~(1 << SEL);
+                                                SEL = (board[y][x] - '1');
+                                                options[j][i] &= ~(1 << SEL);
+                                            }
                                     }
                             }
                     }
             }
-
-        for (i = 0; i < 9; i++)
-            {
-                for (j = 0; j < 9; j++)
-                    {
-                        std::cout << "@ [i, j] = [" << (int)i << ',' << (int)j
-                                  << "]  ";
-                        std::cout << "we have options = "
-                                  << std::bitset<16> (options[i][j]) << '\n';
-                    }
-            }
-
-        backtrack (board, options, MASK, i, j, x, y, ID, p, q);
+        backtrack (board, options, ID, 0, 0);
     }
 
   private:
-    void
+    bool
     backtrack (std::vector<std::vector<char>> &board,
-               unsigned short (&options)[9][9], unsigned short &MASK,
-               unsigned char &i, unsigned char &j, unsigned char &x,
-               unsigned char &y, const unsigned char (&ID)[9],
-               unsigned char &p, unsigned char &q)
+               unsigned short (&options)[9][9], const unsigned char (&ID)[9],
+               unsigned char p, unsigned char q)
     {
-        if (p >= 9)
-            return;
 
+        if (p >= 9)
+            return true; // done
         if (q >= 9)
-            {
-                p++;
-                q = 0;
-                backtrack (board, options, MASK, i, j, x, y, ID, p, q);
-                if (p >= 9)
-                    return;
-                p--;
-                return;
-            }
+            return backtrack (board, options, ID, p + 1, 0);
+        if (board[p][q] != '.')
+            return backtrack (board, options, ID, p, q + 1);
+
         for (unsigned char r = 0; r < 9; r++)
             {
                 if (!(options[p][q] & (1 << r)))
                     continue;
-
                 board[p][q] = '1' + r;
 
-                if (validate (board, options, MASK, i, j, x, y, ID, p, q, r))
+                if (validate (board, ID, p, q))
                     {
-                        std::cout << "backtrack Sudoku:\n";
-                        for (int i = 0; i < 9; i++)
-                            {
-                                for (int j = 0; j < 9; j++)
-                                    {
-                                        std::cout << board[i][j] << " ";
-                                        if (j == 2 || j == 5)
-                                            std::cout << "  ";
-                                    }
-                                std::cout << "\n";
-                                if (i == 2 || i == 5)
-                                    std::cout << "\n";
-                            }
-                        for (i = 0; i < 9; i++)
-                            {
-                                for (j = 0; j < 9; j++)
-                                    {
-                                        std::cout << "@ [i, j] = [" << (int)i
-                                                  << ',' << (int)j << "]  ";
-                                        std::cout
-                                            << "we have options = "
-                                            << std::bitset<16> (options[i][j])
-                                            << '\n';
-                                    }
-                            }
-                        q++;
-                        backtrack (board, options, MASK, i, j, x, y, ID, p, q);
-                        if (p >= 9)
-                            return;
-                        q--;
 
-                        for (i = 0; i < 9; i++)
+                        if (backtrack (board, options, ID, p, q + 1))
                             {
-                                options[p][i] |= (1 << r);
-                                options[i][q] |= (1 << r);
-                            }
-
-                        for (y = ID[p]; y < ID[p] + 3; y++)
-                            {
-                                for (x = ID[q]; x < ID[q] + 3; x++)
-                                    {
-                                        options[y][x] |= (1 << r);
-                                    }
+                                return true;
                             }
                     }
+                board[p][q] = '.';
             }
-        if (q >= 8)
-            {
-                q = 0;
-                backtrack (board, options, MASK, i, j, x, y, ID, p, q);
-            }
-        return;
+        return false;
     }
 
     bool
     validate (std::vector<std::vector<char>> &sudoku,
-              unsigned short (&options)[9][9], unsigned short &MASK,
-              unsigned char &i, unsigned char &j, unsigned char &x,
-              unsigned char &y, const unsigned char (&ID)[9],
-              const unsigned char &p, const unsigned char &q,
-              const unsigned char &r)
+              const unsigned char (&ID)[9], const unsigned char p,
+              const unsigned char q)
     {
 
-        for (i = 0; i < q; i++)
+        for (unsigned char i = 0; i < 9; i++)
             {
-                if (sudoku[p][i] == sudoku[p][q])
-                    {
-                        options[p][q] &= ~(1 << r);
-                        return false;
-                    }
+                if (i != q && sudoku[p][i] == sudoku[p][q])
+                    return false;
             }
-        for (j = 0; j < p; j++)
+        for (unsigned char j = 0; j < p; j++)
             {
-                if (sudoku[j][q] == sudoku[p][q])
-                    {
-                        options[p][q] &= ~(1 << r);
-                        return false;
-                    }
+                if (j != p && sudoku[j][q] == sudoku[p][q])
+                    return false;
             }
-        for (y = ID[p]; y < p; y++)
+        for (unsigned char y = ID[p]; y < ID[p] + 3; y++)
             {
-                for (x = ID[q]; x < q; x++)
+                for (unsigned char x = ID[q]; x < ID[q] + 3; x++)
                     {
+                        if (y == p && x == q)
+                            continue;
                         if (sudoku[y][x] == sudoku[p][q])
                             {
-                                options[y][x] &= ~(1 << r);
                                 return false;
                             }
                     }
@@ -768,20 +697,6 @@ class Solution
 
         // we make the next iteration make the latests selection count as valid
         // option
-
-        for (i = 0; i < 9; i++)
-            {
-                options[p][i] &= ~(1 << r);
-                options[i][q] &= ~(1 << r);
-            }
-
-        for (y = ID[p]; y < ID[p] + 3; y++)
-            {
-                for (x = ID[q]; x < ID[q] + 3; x++)
-                    {
-                        options[y][x] &= ~(1 << r);
-                    }
-            }
 
         return true;
     }
@@ -801,6 +716,16 @@ main ()
             { '.', '6', '.', '.', '.', '.', '2', '8', '.' },
             { '.', '.', '.', '4', '1', '9', '.', '.', '5' },
             { '.', '.', '.', '.', '8', '.', '.', '7', '9' } };
+    std::vector<std::vector<char>> exp_res
+        = { { '5', '3', '4', '6', '7', '8', '9', '1', '2' },
+            { '6', '7', '2', '1', '9', '5', '3', '4', '8' },
+            { '1', '9', '8', '3', '4', '2', '5', '6', '7' },
+            { '8', '5', '9', '7', '6', '1', '4', '2', '3' },
+            { '4', '2', '6', '8', '5', '3', '7', '9', '1' },
+            { '7', '1', '3', '9', '2', '4', '8', '5', '6' },
+            { '9', '6', '1', '5', '3', '7', '2', '8', '4' },
+            { '2', '8', '7', '4', '1', '9', '6', '3', '5' },
+            { '3', '4', '5', '2', '8', '6', '1', '7', '9' } };
     Solution solver;
 
     // Start measuring time
@@ -857,6 +782,11 @@ main ()
             if (i == 2 || i == 5)
                 std::cout << "\n";
         }
+
+    if (board == exp_res)
+        std::cout << "\n\n\n\n EUREKAAAAA you did it bro \n\n";
+    else
+        std::cout << "\n\n\n\n FUCCKKKKKKK you didnt do it bro \n\n";
 
     // Print execution time
     std::cout << "\nExecution Time: " << duration_micro.count ()
