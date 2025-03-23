@@ -1,10 +1,10 @@
 #include <cassert>
 #include <chrono>
-#include <future>
+#include <climits>
+#include <cstring>
 #include <iostream>
+#include <mutex>
 #include <thread>
-#include <unordered_map>
-#include <utility>
 #include <vector>
 
 // ANIMAL style brute force
@@ -577,222 +577,431 @@ class Solution
 };
 */
 
+/*
 class Solution
 {
-  public:
-    void
-    solveSudoku (std::vector<std::vector<char>> &board)
-    {
-        unsigned short options[9][9];
-        unsigned short MASK = 0b0000000111111111, SEL;
+ public:
+   void
+   solveSudoku (std::vector<std::vector<char> > &board)
+   {
+      unsigned char options[9][9][9];
+      char SEL = 0;
 
-        std::fill (&options[0][0], &options[0][0] + 81, MASK);
+      memset (&options[0][0][0], 1, sizeof (unsigned char) * 729);
 
-        unsigned char i, j;
-        static const unsigned char ID[9] = { 0, 0, 0, 3, 3, 3, 6, 6, 6 };
-        unsigned char x, y;
+      unsigned char i, j, x, y;
+      static const unsigned char ID[9] = { 0, 0, 0, 3, 3, 3, 6, 6, 6 };
 
-        for (j = 0; j < 9; j++)
+      for (j = 0; j < 9; j++)
+         {
+            for (i = 0; i < 9; i++)
+               {
+                  if (board[j][i] != '.')
+                     {
+                        SEL = (board[j][i] - '1');
+                        for (x = 0; x < 9; x++)
+                           {
+                              if (x == SEL)
+                                 options[j][i][SEL] = 1;
+                              else
+                                 options[j][i][x] = 0;
+                           }
+                     }
+                  else
+                     {
+                        for (x = 0; x < 9; x++)
+                           {
+                              if (x != i && board[j][x] != '.')
+                                 {
+                                    SEL = (board[j][x] - '1');
+                                    options[j][i][SEL] = 0;
+                                 }
+                              if (x != j && board[x][i] != '.')
+                                 {
+                                    SEL = (board[x][i] - '1');
+                                    options[j][i][SEL] = 0;
+                                 }
+                              // more pretty debuging
+                           }
+                        for (y = ID[j]; y < ID[j] + 3; y++)
+                           {
+                              for (x = ID[i]; x < ID[i] + 3; x++)
+                                 {
+                                    if (board[y][x] == '.')
+                                       continue;
+                                    SEL = (board[y][x] - '1');
+                                    options[j][i][SEL] = 0;
+                                 }
+                           }
+                     }
+               }
+         }
+
+      backtrack (board, options, 0, 0);
+   }
+
+ private:
+   bool
+   backtrack (std::vector<std::vector<char> > &board,
+              unsigned char (&options)[9][9][9], unsigned char p,
+              unsigned char q)
+   {
+      if (p >= 9)
+         return true; // Solved
+      if (q >= 9)
+         return backtrack (board, options, p + 1, 0);
+
+      if (board[p][q] != '.')
+         return backtrack (board, options, p, q + 1);
+
+      for (unsigned char r = 0; r < 9; r++)
+         {
+            if (!options[p][q][r])
+               continue;
+            board[p][q] = '1' + r;
+
+            if (validate (board, p, q))
+               {
+                  if (backtrack (board, options, p, q + 1))
+                     {
+                        return true;
+                     }
+               }
+            board[p][q] = '.'; // Backtrack
+         }
+      return false;
+   }
+
+   bool
+   validate (std::vector<std::vector<char> > &board, const unsigned char &p,
+             const unsigned char &q)
+   {
+      char num = board[p][q];
+      for (unsigned char i = 0; i < 9; i++)
+         {
+            if (i != q && board[p][i] == num)
+               return false;
+            if (i != p && board[i][q] == num)
+               return false;
+         }
+
+      unsigned char startRow = p / 3 * 3;
+      unsigned char startCol = q / 3 * 3;
+
+      for (unsigned char y = startRow; y < startRow + 3; y++)
+         {
+            for (unsigned char x = startCol; x < startCol + 3; x++)
+               {
+                  if ((x != q || y != p) && board[y][x] == num)
+                     return false;
+               }
+         }
+      return true;
+   }
+};
+*/
+
+class Solution
+{
+ public:
+   void
+   solveSudoku (std::vector<std::vector<char> > &board)
+   {
+      unsigned short options[9][9];
+      unsigned short MASK = 0b0000000111111111, SEL;
+
+      std::fill (&options[0][0], &options[0][0] + 81, MASK);
+
+      unsigned char i, j;
+      static const unsigned char ID[9] = { 0, 0, 0, 3, 3, 3, 6, 6, 6 };
+      static const unsigned char LI[9] = { 3, 3, 3, 6, 6, 6, 9, 9, 9 };
+      unsigned char x, y;
+
+      for (j = 0; j < 9; j++)
+         {
+            for (i = 0; i < 9; i++)
+               {
+                  if (board[j][i] != '.')
+                     {
+                        SEL = (board[j][i] - '1');
+                        options[j][i] &= (1 << SEL);
+                     }
+                  else
+                     {
+                        for (x = 0; x < 9; x++)
+                           {
+                              if (x != i && board[j][x] != '.')
+                                 {
+                                    SEL = (board[j][x] - '1');
+                                    options[j][i] &= ~(1 << SEL);
+                                 }
+                              if (x != j && board[x][i] != '.')
+                                 {
+                                    SEL = (board[x][i] - '1');
+                                    options[j][i] &= ~(1 << SEL);
+                                 }
+                           }
+                        for (y = ID[j]; y < ID[j] + 3; y++)
+                           {
+                              for (x = ID[i]; x < ID[i] + 3; x++)
+                                 {
+                                    if (board[y][x] == '.')
+                                       continue;
+
+                                    SEL = (board[y][x] - '1');
+                                    options[j][i] &= ~(1 << SEL);
+                                 }
+                           }
+                     }
+               }
+         }
+      backtrack (board, options, ID, LI, 0, 0);
+   }
+
+ private:
+   bool
+   backtrack (std::vector<std::vector<char> > &board,
+              unsigned short (&options)[9][9], const unsigned char (&ID)[9],
+              const unsigned char (&LI)[9], unsigned char p, unsigned char q)
+   {
+
+      if (p >= 9)
+         return true; // done
+      if (q >= 9)
+         return backtrack (board, options, ID, LI, p + 1, 0);
+      if (board[p][q] != '.')
+         return backtrack (board, options, ID, LI, p, q + 1);
+
+      for (unsigned char r = 0; r < 9; r++)
+         {
+            if (!(options[p][q] & (1 << r)))
+               continue;
+            board[p][q] = '1' + r;
+
+            if (validate (board, ID, LI, p, q))
+               {
+
+                  if (backtrack (board, options, ID, LI, p, q + 1))
+                     {
+                        return true;
+                     }
+               }
+            board[p][q] = '.';
+         }
+      return false;
+   }
+
+   inline bool
+   validate (std::vector<std::vector<char> > &sudoku,
+             const unsigned char (&ID)[9], const unsigned char (&LI)[9],
+             const unsigned char p, const unsigned char q)
+   {
+
+      for (unsigned char i = 0; i < 9; i++)
+         {
+            if (i != q && sudoku[p][i] == sudoku[p][q])
+               return false;
+         }
+      for (unsigned char j = 0; j < p; j++)
+         {
+            if (j != p && sudoku[j][q] == sudoku[p][q])
+               return false;
+         }
+      for (unsigned char y = ID[p]; y < LI[p]; y++)
+         {
+            for (unsigned char x = ID[q]; x < LI[q]; x++)
+               {
+                  if (y == p && x == q)
+                     continue;
+                  if (sudoku[y][x] == sudoku[p][q])
+                     {
+                        return false;
+                     }
+               }
+         }
+
+      // we make the next iteration make the latests selection count as valid
+      // option
+
+      return true;
+   }
+};
+
+int
+main_4_perf ()
+{
+   // Example Sudoku board (empty cells as '.')
+   std::vector<std::vector<char> > board
+       = { { '5', '3', '.', '.', '7', '.', '.', '.', '.' },
+           { '6', '.', '.', '1', '9', '5', '.', '.', '.' },
+           { '.', '9', '8', '.', '.', '.', '.', '6', '.' },
+           { '8', '.', '.', '.', '6', '.', '.', '.', '3' },
+           { '4', '.', '.', '8', '.', '3', '.', '.', '1' },
+           { '7', '.', '.', '.', '2', '.', '.', '.', '6' },
+           { '.', '6', '.', '.', '.', '.', '2', '8', '.' },
+           { '.', '.', '.', '4', '1', '9', '.', '.', '5' },
+           { '.', '.', '.', '.', '8', '.', '.', '7', '9' } };
+   std::vector<std::vector<char> > exp_res
+       = { { '5', '3', '4', '6', '7', '8', '9', '1', '2' },
+           { '6', '7', '2', '1', '9', '5', '3', '4', '8' },
+           { '1', '9', '8', '3', '4', '2', '5', '6', '7' },
+           { '8', '5', '9', '7', '6', '1', '4', '2', '3' },
+           { '4', '2', '6', '8', '5', '3', '7', '9', '1' },
+           { '7', '1', '3', '9', '2', '4', '8', '5', '6' },
+           { '9', '6', '1', '5', '3', '7', '2', '8', '4' },
+           { '2', '8', '7', '4', '1', '9', '6', '3', '5' },
+           { '3', '4', '5', '2', '8', '6', '1', '7', '9' } };
+
+   // Print input board
+   std::cout << "input Sudoku:\n";
+   for (int i = 0; i < 9; i++)
+      {
+         for (int j = 0; j < 9; j++)
             {
-                for (i = 0; i < 9; i++)
-                    {
-                        if (board[j][i] != '.')
-                            {
-                                SEL = (board[j][i] - '1');
-                                options[j][i] &= (1 << SEL);
-                            }
-                        else
-                            {
-                                for (x = 0; x < 9; x++)
-                                    {
-                                        if (x != i && board[j][x] != '.')
-                                            {
-                                                SEL = (board[j][x] - '1');
-                                                options[j][i] &= ~(1 << SEL);
-                                            }
-                                        if (x != j && board[x][i] != '.')
-                                            {
-                                                SEL = (board[x][i] - '1');
-                                                options[j][i] &= ~(1 << SEL);
-                                            }
-                                    }
-                                for (y = ID[j]; y < ID[j] + 3; y++)
-                                    {
-                                        for (x = ID[i]; x < ID[i] + 3; x++)
-                                            {
-                                                if (board[y][x] == '.')
-                                                    continue;
-
-                                                SEL = (board[y][x] - '1');
-                                                options[j][i] &= ~(1 << SEL);
-                                            }
-                                    }
-                            }
-                    }
+               std::cout << board[i][j] << " ";
+               if (j == 2 || j == 5)
+                  std::cout << "  ";
             }
-        backtrack (board, options, ID, 0, 0);
-    }
+         std::cout << "\n";
+         if (i == 2 || i == 5)
+            std::cout << "\n";
+      }
 
-  private:
-    bool
-    backtrack (std::vector<std::vector<char>> &board,
-               unsigned short (&options)[9][9], const unsigned char (&ID)[9],
-               unsigned char p, unsigned char q)
-    {
+   Solution solver;
 
-        if (p >= 9)
-            return true; // done
-        if (q >= 9)
-            return backtrack (board, options, ID, p + 1, 0);
-        if (board[p][q] != '.')
-            return backtrack (board, options, ID, p, q + 1);
+   // Start measuring time.
+   auto start = std::chrono::high_resolution_clock::now ();
 
-        for (unsigned char r = 0; r < 9; r++)
+   // Run the solver.
+   solver.solveSudoku (board);
+
+   // Stop measuring time.
+   auto stop = std::chrono::high_resolution_clock::now ();
+
+   // Compute durations.
+   auto duration_micro
+       = std::chrono::duration_cast<std::chrono::microseconds> (stop - start);
+   auto duration_milli
+       = std::chrono::duration_cast<std::chrono::milliseconds> (stop - start);
+
+   std::cout << "\nExecution Time: " << duration_micro.count ()
+             << " microseconds\n";
+   std::cout << "Execution Times: " << duration_milli.count ()
+             << " milliseconds\n";
+
+   return 0;
+};
+
+int
+main_threaded ()
+{
+   // Example Sudoku board (empty cells as '.')
+   std::vector<std::vector<char> > board
+       = { { '5', '3', '.', '.', '7', '.', '.', '.', '.' },
+           { '6', '.', '.', '1', '9', '5', '.', '.', '.' },
+           { '.', '9', '8', '.', '.', '.', '.', '6', '.' },
+           { '8', '.', '.', '.', '6', '.', '.', '.', '3' },
+           { '4', '.', '.', '8', '.', '3', '.', '.', '1' },
+           { '7', '.', '.', '.', '2', '.', '.', '.', '6' },
+           { '.', '6', '.', '.', '.', '.', '2', '8', '.' },
+           { '.', '.', '.', '4', '1', '9', '.', '.', '5' },
+           { '.', '.', '.', '.', '8', '.', '.', '7', '9' } };
+   std::vector<std::vector<char> > exp_res
+       = { { '5', '3', '4', '6', '7', '8', '9', '1', '2' },
+           { '6', '7', '2', '1', '9', '5', '3', '4', '8' },
+           { '1', '9', '8', '3', '4', '2', '5', '6', '7' },
+           { '8', '5', '9', '7', '6', '1', '4', '2', '3' },
+           { '4', '2', '6', '8', '5', '3', '7', '9', '1' },
+           { '7', '1', '3', '9', '2', '4', '8', '5', '6' },
+           { '9', '6', '1', '5', '3', '7', '2', '8', '4' },
+           { '2', '8', '7', '4', '1', '9', '6', '3', '5' },
+           { '3', '4', '5', '2', '8', '6', '1', '7', '9' } };
+
+   // Print input board
+   std::cout << "input Sudoku:\n";
+   for (int i = 0; i < 9; i++)
+      {
+         for (int j = 0; j < 9; j++)
             {
-                if (!(options[p][q] & (1 << r)))
-                    continue;
-                board[p][q] = '1' + r;
-
-                if (validate (board, ID, p, q))
-                    {
-
-                        if (backtrack (board, options, ID, p, q + 1))
-                            {
-                                return true;
-                            }
-                    }
-                board[p][q] = '.';
+               std::cout << board[i][j] << " ";
+               if (j == 2 || j == 5)
+                  std::cout << "  ";
             }
-        return false;
-    }
+         std::cout << "\n";
+         if (i == 2 || i == 5)
+            std::cout << "\n";
+      }
 
-    bool
-    validate (std::vector<std::vector<char>> &sudoku,
-              const unsigned char (&ID)[9], const unsigned char p,
-              const unsigned char q)
-    {
+   std::mutex mut;
+   // Use long long to hold microseconds and milliseconds values.
+   std::vector<std::pair<long long, long long> > duration_vect;
+   std::vector<std::thread> threads;
 
-        for (unsigned char i = 0; i < 9; i++)
+   // Launch 100 threads.
+   for (int i = 0; i < 100; i++)
+      {
+         // Capture 'board' by value so each thread has its own copy.
+         threads.emplace_back ([&mut, &duration_vect, board] () mutable {
+            Solution solver;
+
+            // Start measuring time.
+            auto start = std::chrono::high_resolution_clock::now ();
+
+            // Run the solver.
+            solver.solveSudoku (board);
+
+            // Stop measuring time.
+            auto stop = std::chrono::high_resolution_clock::now ();
+
+            // Compute durations.
+            auto duration_micro
+                = std::chrono::duration_cast<std::chrono::microseconds> (
+                    stop - start);
+            auto duration_milli
+                = std::chrono::duration_cast<std::chrono::milliseconds> (
+                    stop - start);
+
+            // Safely update the shared vector using RAII locking.
             {
-                if (i != q && sudoku[p][i] == sudoku[p][q])
-                    return false;
+               std::lock_guard<std::mutex> lock (mut);
+               duration_vect.push_back (
+                   { duration_micro.count (), duration_milli.count () });
             }
-        for (unsigned char j = 0; j < p; j++)
-            {
-                if (j != p && sudoku[j][q] == sudoku[p][q])
-                    return false;
-            }
-        for (unsigned char y = ID[p]; y < ID[p] + 3; y++)
-            {
-                for (unsigned char x = ID[q]; x < ID[q] + 3; x++)
-                    {
-                        if (y == p && x == q)
-                            continue;
-                        if (sudoku[y][x] == sudoku[p][q])
-                            {
-                                return false;
-                            }
-                    }
-            }
+         });
+      }
 
-        // we make the next iteration make the latests selection count as valid
-        // option
+   // Join all threads to ensure they have completed before moving on.
+   for (auto &thr : threads)
+      {
+         if (thr.joinable ())
+            thr.join ();
+      }
 
-        return true;
-    }
+   // Calculate the average execution times.
+   double total_micro = 0;
+   double total_milli = 0;
+   for (auto &pair : duration_vect)
+      {
+         total_micro += pair.first;
+         total_milli += pair.second;
+      }
+
+   std::cout << "\nAVERAGE of the 100 Execution Times: " << total_micro / 100.0
+             << " microseconds\n";
+   std::cout << "AVERAGE of the 100 Execution Times: " << total_milli / 100.0
+             << " milliseconds\n";
+
+   return 0;
 };
 
 int
 main ()
 {
-    // Example Sudoku board (empty cells as '.')
-    std::vector<std::vector<char>> board
-        = { { '5', '3', '.', '.', '7', '.', '.', '.', '.' },
-            { '6', '.', '.', '1', '9', '5', '.', '.', '.' },
-            { '.', '9', '8', '.', '.', '.', '.', '6', '.' },
-            { '8', '.', '.', '.', '6', '.', '.', '.', '3' },
-            { '4', '.', '.', '8', '.', '3', '.', '.', '1' },
-            { '7', '.', '.', '.', '2', '.', '.', '.', '6' },
-            { '.', '6', '.', '.', '.', '.', '2', '8', '.' },
-            { '.', '.', '.', '4', '1', '9', '.', '.', '5' },
-            { '.', '.', '.', '.', '8', '.', '.', '7', '9' } };
-    std::vector<std::vector<char>> exp_res
-        = { { '5', '3', '4', '6', '7', '8', '9', '1', '2' },
-            { '6', '7', '2', '1', '9', '5', '3', '4', '8' },
-            { '1', '9', '8', '3', '4', '2', '5', '6', '7' },
-            { '8', '5', '9', '7', '6', '1', '4', '2', '3' },
-            { '4', '2', '6', '8', '5', '3', '7', '9', '1' },
-            { '7', '1', '3', '9', '2', '4', '8', '5', '6' },
-            { '9', '6', '1', '5', '3', '7', '2', '8', '4' },
-            { '2', '8', '7', '4', '1', '9', '6', '3', '5' },
-            { '3', '4', '5', '2', '8', '6', '1', '7', '9' } };
-    Solution solver;
 
-    // Start measuring time
-    auto start = std::chrono::high_resolution_clock::now ();
-    // Print input board
-    std::cout << "input Sudoku:\n";
-    for (int i = 0; i < 9; i++)
-        {
-            for (int j = 0; j < 9; j++)
-                {
-                    std::cout << board[i][j] << " ";
-                    if (j == 2 || j == 5)
-                        std::cout << "  ";
-                }
-            std::cout << "\n";
-            if (i == 2 || i == 5)
-                std::cout << "\n";
-        }
+   // for perf call main_4_perf
+   // for benchmark of 100 calls of solveSudoku function call main_threaded
 
-    std::future<void> future = std::async (
-        std::launch::async, &Solution::solveSudoku, &solver, std::ref (board));
+   main_4_perf ();
 
-    // Wait for 1 second, then check if it's done
-    if (future.wait_for (std::chrono::seconds (1))
-        == std::future_status::ready)
-        {
-            future.get (); // Get the result if finished
-        }
-    else
-        {
-            std::cout << "Timeout: Sudoku solving took too long!" << std::endl;
-        }
-
-    // Stop measuring time
-    auto stop = std::chrono::high_resolution_clock::now ();
-
-    // Compute duration in microseconds
-    auto duration_micro
-        = std::chrono::duration_cast<std::chrono::microseconds> (stop - start);
-    auto duration_mill
-        = std::chrono::duration_cast<std::chrono::milliseconds> (stop - start);
-
-    // Print solved board
-    std::cout << "Solved Sudoku:\n";
-    for (int i = 0; i < 9; i++)
-        {
-            for (int j = 0; j < 9; j++)
-                {
-                    std::cout << board[i][j] << " ";
-                    if (j == 2 || j == 5)
-                        std::cout << "  ";
-                }
-            std::cout << "\n";
-            if (i == 2 || i == 5)
-                std::cout << "\n";
-        }
-
-    if (board == exp_res)
-        std::cout << "\n\n\n\n EUREKAAAAA you did it bro \n\n";
-    else
-        std::cout << "\n\n\n\n FUCCKKKKKKK you didnt do it bro \n\n";
-
-    // Print execution time
-    std::cout << "\nExecution Time: " << duration_micro.count ()
-              << " microseconds\n";
-    std::cout << "\nExecution Time: " << duration_mill.count ()
-              << " milliseconds\n";
-
-    return 0;
+   return 0;
 }
