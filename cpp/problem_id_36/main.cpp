@@ -78,6 +78,7 @@ class Solution
                                 [409 ns, 422 ns]
 
  ************************************************/
+
 /*
 class Solution
 {
@@ -362,7 +363,6 @@ class Solution
 
  ************************************************/
 
-/*
 class Solution
 {
  public:
@@ -445,7 +445,6 @@ class Solution
       return true;
    }
 };
-*/
 
 // PERFECT BALANCE BETWEEN
 // MEMORY EFFICIENT 42 Bytes
@@ -468,6 +467,7 @@ class Solution
 
  ************************************************/
 
+/*
 class Solution
 {
  public:
@@ -658,6 +658,7 @@ class Solution
       return true;
    }
 };
+*/
 
 int
 main ()
@@ -690,7 +691,7 @@ main ()
       {
          for (int j = 0; j < 9; j++)
             {
-               std::cout << board[i][j] << " ";
+               std::cout << exp_res[i][j] << " ";
                if (j == 2 || j == 5)
                   std::cout << "  ";
             }
@@ -704,103 +705,103 @@ main ()
     * FOR TESTBENCHING 10000000 FUNCTION CALL AVERAGE TIME
     */
 
-   std::vector<bool> outs;
-   constexpr int iterations = 10000000;
-   auto total_duration = std::chrono::nanoseconds (0);
+   /*
+  std::vector<bool> outs;
+  constexpr int iterations = 10000000;
+  auto total_duration = std::chrono::nanoseconds (0);
 
-   for (int i = 0; i < iterations; ++i)
-      {
-         auto start = std::chrono::high_resolution_clock::now ();
-         volatile bool result = solver.isValidSudoku (board);
-         auto stop = std::chrono::high_resolution_clock::now ();
-         outs.push_back (result);
-         total_duration += stop - start;
-      }
+  for (int i = 0; i < iterations; ++i)
+     {
+        auto start = std::chrono::high_resolution_clock::now ();
+        volatile bool result = solver.isValidSudoku (exp_res);
+        auto stop = std::chrono::high_resolution_clock::now ();
+        outs.push_back (result);
+        total_duration += stop - start;
+     }
 
-   auto average_duration = total_duration / iterations;
-   std::cout << "Average Execution Time of the " << iterations
-             << " iterations is : "
-             << std::chrono::duration_cast<std::chrono::nanoseconds> (
-                    average_duration)
-                    .count ()
-             << " ns\n";
+  auto average_duration = total_duration / iterations;
+  std::cout << "Average Execution Time of the " << iterations
+            << " iterations is : "
+            << std::chrono::duration_cast<std::chrono::nanoseconds> (
+                   average_duration)
+                   .count ()
+            << " ns\n";
 
-   bool bolita = true;
-   for (auto bol : outs)
-      {
-         if (bol)
-            continue;
-         bolita = false;
-         break;
-      }
-   if (bolita)
-      {
-         std::cout << "\033[1;32mTRUE \033[0m";
-      }
-   else
-      {
-         std::cout << "\033[1;31mFALSE \033[0m";
-      }
-   std::cout << '\n';
+  bool bolita = true;
+  for (auto bol : outs)
+     {
+        if (bol)
+           continue;
+        bolita = false;
+        break;
+     }
+  if (bolita)
+     {
+        std::cout << "\033[1;32mTRUE \033[0m";
+     }
+  else
+     {
+        std::cout << "\033[1;31mFALSE \033[0m";
+     }
+  std::cout << '\n';
+ */
 
    //* TESTBENCH for the 507 testcases of leetcode
    //  sum of the time will be returned (its random)
 
-   /*
-    constexpr int iterations = 507;
+   constexpr int iterations = 507;
 
-    auto total_duration = std::chrono::nanoseconds (0);
+   auto total_duration = std::chrono::nanoseconds (0);
 
-    for (int i = 0; i < iterations; ++i)
-       {
+   for (int i = 0; i < iterations; ++i)
+      {
 
-          for (int p = 0; p < 9; ++p)
-             {
-                for (int q = 0; q < 9; ++q)
-                   {
-                      // since the FASTEST algorithm I checks all squares
-                      // (if valid if not it halts and return false)
-                      // to test speed its irrelevant whats inside the
-    board
-                      // (to some degree don't be annoying)
+         for (int p = 0; p < 9; ++p)
+            {
+               for (int q = 0; q < 9; ++q)
+                  {
+                     // since the FASTEST algorithm I checks all squares
+                     // (if valid if not it halts and return false)
+                     // to test speed its irrelevant whats inside the
+                     // board
+                     // (to some degree don't be annoying)
 
-                      board[p][q] = '1' + rand () % 8;
-                   }
-             }
-          auto start = std::chrono::high_resolution_clock::now ();
-          // volatile so compiler doesnt optimize it away lol
-          volatile bool result = solver.isValidSudoku (exp_res);
-          auto stop = std::chrono::high_resolution_clock::now ();
-          total_duration += stop - start;
-       }
+                     board[p][q] = '1' + rand () % 8;
+                  }
+            }
+         auto start = std::chrono::high_resolution_clock::now ();
+         // volatile so compiler doesnt optimize it away lol
+         volatile bool result = solver.isValidSudoku (exp_res);
+         auto stop = std::chrono::high_resolution_clock::now ();
+         total_duration += stop - start;
+      }
 
-    std::cout << "TOTAL SUM OF EXECUTION Time of the " << iterations
-              << " 507 random boards is : \n"
-              << "\033[1;32m"
-              << "\t"
-              << std::chrono::duration_cast<std::chrono::nanoseconds> (
-                     total_duration)
-                     .count ()
-              << " ns\n"
-              << "\033[0m";
+   std::cout << "TOTAL SUM OF EXECUTION Time of the " << iterations
+             << " 507 random boards is : \n"
+             << "\033[1;32m"
+             << "\t"
+             << std::chrono::duration_cast<std::chrono::nanoseconds> (
+                    total_duration)
+                    .count ()
+             << " ns\n"
+             << "\033[0m";
 
-    std::cout << "\033[1;32m"
-              << "\t"
+   std::cout << "\033[1;32m"
+             << "\t"
 
-              << std::chrono::duration_cast<std::chrono::microseconds> (
-                     total_duration)
-                     .count ()
-              << " μs\n"
-              << "\033[0m";
+             << std::chrono::duration_cast<std::chrono::microseconds> (
+                    total_duration)
+                    .count ()
+             << " μs\n"
+             << "\033[0m";
 
-    std::cout << "\033[1;32m"
-              << "\t"
-              << std::chrono::duration_cast<std::chrono::milliseconds> (
-                     total_duration)
-                     .count ()
-              << " ms\n"
-              << "\033[0m";
-     */
+   std::cout << "\033[1;32m"
+             << "\t"
+             << std::chrono::duration_cast<std::chrono::milliseconds> (
+                    total_duration)
+                    .count ()
+             << " ms\n"
+             << "\033[0m";
 
    // Individual test
    /*
