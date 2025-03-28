@@ -1,0 +1,9 @@
+2025-03-20 21:24
+Lucca Labattaglia
+GITHUB: theargcoder
+
+literally returning the size of vector of problem 51.......
+I am not going to even think about solving this any other way lol.
+Pointless....
+
+theargcoder
