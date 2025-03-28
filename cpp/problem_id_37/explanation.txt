@@ -13,7 +13,7 @@ Lucca Labattaglia
 GITHUB: theargcoder
 
 Well Well Well, Got back into this problem after my solution 
-excelling in problem id 51. (see it)
+excelling in problem id 51. (see it for yourself)
 and let me tell you I didn't let down at all,
 I was able to achive ~400 MICRO second times on a initialized 
 board AUTHORED BY ME AND ME MYSELF (valid one ofc)
