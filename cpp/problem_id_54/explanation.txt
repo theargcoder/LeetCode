@@ -1,0 +1,16 @@
+2025-03-29 00:10
+Lucca Labattaglia
+GITHUB: theargcoder
+
+its always the most simple looking problems, that are the most tiresome.
+
+anyhow, we use a state machine, we have 4 states, up, down, right, left
+when we move from:
+  right -> down we move our top wall down.
+  down -> left we move our right wall left.
+  left -> up we move our bottom wall up.
+  up -> right we move our left wall right.
+do this untill 2 walls collide then finish the row/column and done.
+
+
+theargcoder
