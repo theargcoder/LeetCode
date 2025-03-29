@@ -1,0 +1,10 @@
+2025-03-28 21:19
+Lucca Labattaglia
+GITHUB: theargcoder
+
+did it in O(n^2) time.....
+Saw in the discussion people we talking about this been "kadane's" algorithm
+and wel well well, this is beyond easy, once you know it.
+
+
+theargcoder
