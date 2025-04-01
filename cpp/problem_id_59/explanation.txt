@@ -1,0 +1,11 @@
+2025-03-31 22:09
+Lucca Labattaglia
+GITHUB: theargcoder
+
+used the spiral algorithm form problem 54 as a base
+just keep track of a counter and spiral your counter push arround
+simple
+
+out,
+
+theargcoder
