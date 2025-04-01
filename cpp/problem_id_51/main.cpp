@@ -438,7 +438,7 @@ class Solution
 class Solution
 {
  public:
-   std::vector<std::vector<std::string> >
+   std::vector<std::vector<std::string>>
    solveNQueens (int n)
    {
       const unsigned short BASE
@@ -458,7 +458,7 @@ class Solution
 
       int row = 0;
 
-      std::vector<std::vector<std::string> > res{};
+      std::vector<std::vector<std::string>> res{};
       res.reserve (353);
       helper (res, board, n, row, NBASE, used, options, prev_mask);
       return res;
@@ -466,7 +466,7 @@ class Solution
 
  private:
    void
-   helper (std::vector<std::vector<std::string> > &res,
+   helper (std::vector<std::vector<std::string>> &res,
            unsigned short (&board)[9], const int &n, int &row,
            const unsigned short &NBASE, bool (&used)[9],
            unsigned short (&options)[9], unsigned short (&prev_mask)[9])
