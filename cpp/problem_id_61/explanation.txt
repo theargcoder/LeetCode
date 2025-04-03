@@ -1,0 +1,12 @@
+2025-04-03 09:35
+Lucca Labattaglia
+GITHUB: theargcoder
+
+in the discussion they proposed the solution using discrete math!!
+still learning discrete math, but the answer is, 
+(m + n - 2)! / ((n - 1)! * (m - 1)!)
+
+pretty cool way to solve this, still in my discrete math class 
+so maybe I'll learn the logic behind it
+
+theargcoder
