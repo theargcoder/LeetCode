@@ -1,36 +1,71 @@
-#include <cmath>
-#include <cstdint>
+#include <filesystem>
 #include <iostream>
-#include <math.h>
+
+//  Definition for singly-linked list.
+
+struct ListNode
+{
+   int val;
+   ListNode *next;
+   ListNode () : val (0), next (nullptr) {}
+   ListNode (int x) : val (x), next (nullptr) {}
+   ListNode (int x, ListNode *next) : val (x), next (next) {}
+};
 
 class Solution
 {
+ private:
+   int limit, halt;
+   bool first = true;
+
  public:
-   int
-   uniquePaths (int m, int n)
+   ListNode *
+   rotateRight (ListNode *head, int k)
    {
+      if (k == 0)
+         return head;
+      if (!head)
+         return head;
+      if (!head->next)
+         return head;
 
-      long double m_n_fac = factorial (m + n - 2);
-      long double m_fac = factorial (m - 1);
-      long double n_fac = factorial (n - 1);
+      limit = 1;
+      ListNode *curr = head, *prev;
+      while (curr->next != nullptr)
+         {
+            limit++;
+            prev = curr;
+            curr = curr->next;
+         }
+      halt = ((k) % limit);
 
-      long double div = m_fac * n_fac;
+      if (halt == 0)
+         return head;
 
-      int res = (int)std::roundl (m_n_fac / div);
+      prev->next = nullptr;
+      curr->next = head;
+      head = curr;
 
-      return res;
+      return helper (head);
    }
 
  private:
-   long double
-   factorial (long double n)
+   ListNode *
+   helper (ListNode *head)
    {
-      long double res = 1;
-      while (n > 1)
+      halt--;
+      if (halt == 0)
+         return head;
+      ListNode *curr = head, *prev;
+      while (curr->next != nullptr)
          {
-            res *= n;
-            n--;
+            prev = curr;
+            curr = curr->next;
          }
-      return res;
+      prev->next = nullptr;
+      curr->next = head;
+      head = curr;
+
+      return helper (head);
    }
 };

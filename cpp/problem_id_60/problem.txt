@@ -1,25 +1,39 @@
+60. Permutation Sequence
 
-61. Rotate List
+The set [1, 2, 3, ..., n] contains a total of n! unique permutations.
 
-Given the head of a linked list, rotate the list to the right by k places.
+By listing and labeling all of the permutations in order, we get the following sequence for n = 3:
+
+    "123"
+    "132"
+    "213"
+    "231"
+    "312"
+    "321"
+
+Given n and k, return the kth permutation sequence.
 
  
 
 Example 1:
 
-Input: head = [1,2,3,4,5], k = 2
-Output: [4,5,1,2,3]
+Input: n = 3, k = 3
+Output: "213"
 
 Example 2:
 
-Input: head = [0,1,2], k = 4
-Output: [2,0,1]
+Input: n = 4, k = 9
+Output: "2314"
+
+Example 3:
+
+Input: n = 3, k = 1
+Output: "123"
 
  
 
 Constraints:
 
-    The number of nodes in the list is in the range [0, 500].
-    -100 <= Node.val <= 100
-    0 <= k <= 2 * 109
+    1 <= n <= 9
+    1 <= k <= n!
 

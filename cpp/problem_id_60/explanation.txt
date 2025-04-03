@@ -2,10 +2,7 @@
 Lucca Labattaglia
 GITHUB: theargcoder
 
-well well well, did 2 wrong submissions;
-one of them on not checking the validity of the input pointer
-another in time limit exceeded
-bruh
-
+I accidentally did problem id 61 in the problem 60
+so yea I don't remember my though process
 
 theargcoder
