@@ -1,0 +1,11 @@
+2025-04-02 20:16
+Lucca Labattaglia
+GITHUB: theargcoder
+
+well well well, did 2 wrong submissions;
+one of them on not checking the validity of the input pointer
+another in time limit exceeded
+bruh
+
+
+theargcoder
