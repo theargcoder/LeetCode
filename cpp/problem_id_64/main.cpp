@@ -147,6 +147,7 @@ class Solution
    minPathSum (std::vector<std::vector<int>> &grid)
    {
       int m = grid.size (), n = grid[0].size ();
+      std::vector<std::vector<int>> dist (m, std::vector<int> (n, INT_MAX));
       using P = std::pair<int, std::pair<int, int>>; // {cost, {x, y}}
       std::priority_queue<P, std::vector<P>, std::greater<>> pq;
 
