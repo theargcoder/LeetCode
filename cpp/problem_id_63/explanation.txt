@@ -1,0 +1,22 @@
+2025-04-21 23:21
+Lucca Labattaglia
+GITHUB: theargcoder
+
+I love it when you learn discrete math theory for nothing 
+since there isn't much practical aplications to simple path counting
+I had a working soulution but it explored every path over and over again
+very slow
+
+now the other solution does the same but without doing any recalculation.
+since we traverse the "graph" in a 2D fashion no point in storing the above
+rows calculation, thus only needing n space instead of n*m space
+In terms of logic we just keep adding the previous path count to the current 
+recursively, similar to Mr Fibonacci's sequence; what makes it different
+its the following line;
+
+
+                  'dp[0] = grid[i][0] ? 0 : dp[0];'
+
+and some more details.
+
+theargcoder
