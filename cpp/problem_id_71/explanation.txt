@@ -1,0 +1,12 @@
+2025-04-28 11:45
+Lucca Labattaglia
+GITHUB: theargcoder
+
+PRE: man, this is a cool ass problem!!!
+
+POST: 
+  Cool asf!!
+  did a wrong test case "/../" because I deleated it accidentally 
+  and didn't try to test that edge case lol
+
+theargcoder
