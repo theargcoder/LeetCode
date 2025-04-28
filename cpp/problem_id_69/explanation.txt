@@ -1,0 +1,16 @@
+2025-04-27 20:00
+Lucca Labattaglia
+GITHUB: theargcoder
+
+well talk about a brute ass way of solving this lol
+I had thought of doing it using the bisection methond aka 
+binary search but didn't do it for some reason (i am lazy)
+
+also since the biggest possible sqrt in a 32 bit int
+is 43,340 then the maximum possible number of iterations
+is just 43k which is not that much in a modern 3+ GHz 
+proccessor..... 
+
+but against log_2(2^32) (aka 32 maximum iterations) is eternal time..... 
+
+theargcoder

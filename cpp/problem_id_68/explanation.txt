@@ -1,0 +1,12 @@
+2025-04-26 23:03
+Lucca Labattaglia
+GITHUB: theargcoder
+
+took way longer than expected lol
+anyhow figured it out
+since the rem var is guaranted to be less than the count of words 
+we balance the indenting by slowly adding 1 unit
+to the int division (aka even) amount of spaces 
+until the rem is zerod and finish the row for good 
+
+theargcoder
