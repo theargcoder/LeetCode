@@ -1,0 +1,11 @@
+2025-05-12 20:42
+Lucca Labattaglia
+GITHUB: theargcoder
+
+to be honest, I had no clue how to even START in the challenge of solving this!!!
+ended up checking the disscussion section and ended up at a presentation: 
+Stanford presentation link: https://web.stanford.edu/class/cs124/lec/med.pdf
+
+using that, I made a working solution.
+
+theargcoder
