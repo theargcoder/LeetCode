@@ -1,0 +1,11 @@
+2025-05-12 22:26
+Lucca Labattaglia
+GITHUB: theargcoder
+
+PREV COMMENT: 
+  If it's requiered to be log(m*n) then will use Bisection method
+  aka binary search
+
+Yessir log(n*m) and passed all tests!!
+
+theargcoder
