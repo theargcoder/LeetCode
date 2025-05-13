@@ -1,0 +1,13 @@
+2025-05-12 23:06
+Lucca Labattaglia
+GITHUB: theargcoder
+
+I was thinking of doing some strange mege-sort kinda deal
+but then I remembered that this was as simple as counting how many
+instances of red, white and blue (AMERICAAAAAA!!!!! (eagle noises))
+and then re fill (reusing memory of the given vector) and done.
+
+taking O(n * 2)
+witch is more time efficient when n > 100 than merge sort !!!
+
+theargcoder
