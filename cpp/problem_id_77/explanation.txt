@@ -1,0 +1,12 @@
+2025-05-15 11:29
+Lucca Labattaglia
+GITHUB: theargcoder
+
+PRE:
+  This seems too easy, we will see if thats the case
+
+POST:
+  just backtracking to construct all possible combinations 
+
+
+theargcoder
