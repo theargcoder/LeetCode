@@ -1,0 +1,15 @@
+2025-05-15 10:46
+Lucca Labattaglia
+GITHUB: theargcoder
+
+did a O(n * m) solution
+but it Time limit exceeded on me :( in test case 365
+
+so tried other approaches and nothing clicked so asked
+my friend ChatGPT for help and it ended up been just
+another sliding window problem.....
+I was trying to expand my windows when I should've tried
+to shrink it.....
+
+
+theargcoder
