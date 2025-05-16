@@ -1,0 +1,13 @@
+2025-05-15 23:08
+Lucca Labattaglia
+GITHUB: theargcoder
+
+had a wrong submission bc when I wrote line 170 
+I put true on backtracing instead of false..... BRUH!!
+
+anyhow beats 93% in time and 85% in memory!!!
+
+using simple backtracking like exploration 
+with some bool return magic!!
+
+theargcoder
