@@ -1,0 +1,12 @@
+2025-05-19 18:28
+Lucca Labattaglia
+GITHUB: theargcoder
+
+“An idiot admires complexity, a genius admires simplicity" 
+Terry Davids. 
+
+40ms
+No stack bs like the other solutions.
+good enough.
+
+theargcoder
