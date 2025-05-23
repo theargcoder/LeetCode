@@ -1,0 +1,10 @@
+2025-05-23 15:18
+Lucca Labattaglia
+GITHUB: theargcoder
+
+was trying to do it without the use of 
+hasing and couldn't make it work
+so just adapted the problem id 78 solution 
+to remove duplicates and done.
+
+theargcoder
