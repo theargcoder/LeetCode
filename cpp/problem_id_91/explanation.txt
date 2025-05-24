@@ -1,0 +1,10 @@
+2025-05-23 22:54
+Lucca Labattaglia
+GITHUB: theargcoder
+
+well accidentally forgot about the leading '0' test case LOL
+and also about the fact that zeros dont inmediatly invalidate your strings
+but beyond this, super good problem, well designed 
+not too complex but had some complexity to be honest
+
+theargcoder
