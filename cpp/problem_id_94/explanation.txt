@@ -1,0 +1,23 @@
+
+Lucca Labattaglia
+GITHUB: theargcoder
+
+PRE:
+  more and more dfs
+  they must love discrete math jesus
+  tree traversal...
+
+PRE 2:
+  correction they want bfs...
+
+PRE 3:
+  correction 2, after cheching my discrete math book 
+  I verified that they want dfs;
+  I got confused in the terminology. bye.
+
+POST:
+  easy asf.
+  done.
+
+
+theargcoder
