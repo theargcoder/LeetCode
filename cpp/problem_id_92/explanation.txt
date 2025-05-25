@@ -1,0 +1,9 @@
+2025-05-25 09:38
+Lucca Labattaglia
+GITHUB: theargcoder
+
+For the millionth time I love linked list problems
+also no memory leak in my code due to deltion 
+if the bl node was created!!!
+
+theargcoder
