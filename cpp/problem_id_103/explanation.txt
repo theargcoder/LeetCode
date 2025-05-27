@@ -1,0 +1,8 @@
+2025-05-27 13:13
+Lucca Labattaglia
+GITHUB: theargcoder
+
+by using dequeue its a little slower 
+but super functional and redable.
+
+theargcoder
