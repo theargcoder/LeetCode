@@ -1,0 +1,10 @@
+2025-05-30 14:07
+Lucca Labattaglia
+GITHUB: theargcoder
+
+the example solution REVERSES the vector?????
+strange stuff when getting the depth of the tree
+takes literally no time.....
+beyond me....
+
+theargcoder
