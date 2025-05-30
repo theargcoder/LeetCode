@@ -1,0 +1,14 @@
+2025-05-30 13:39
+Lucca Labattaglia
+GITHUB: theargcoder
+
+hell yeah!!!
+did it like magic!!!
+also the previous problem solution logic
+helped a lot.
+
+NOTE:
+   // second vector not by reference so we can pop_back without altering input
+   // vectors in case of later use of these vectors.
+
+theargcoder
