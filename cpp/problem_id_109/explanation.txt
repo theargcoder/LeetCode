@@ -1,7 +1,11 @@
-
+2025-05-30 14:43
 Lucca Labattaglia
 GITHUB: theargcoder
 
+THERE IS A SPAN NON-owning VIEW OF CONTIGIOUS ELEMENTS IN C++
+WTF WHY DID I NOT KNOW ABOUT IT!!!!
+EPIC, my solution slow since I didn't know about std::span!!!
 
+cool,cool, cool.
 
 theargcoder
