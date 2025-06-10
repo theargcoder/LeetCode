@@ -23,7 +23,7 @@ Statistics
 
 *Rank:*
 
-> `1,193,024`
+> `1,027,884`
 
 More Information
 -----------------
