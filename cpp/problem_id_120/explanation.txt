@@ -1,0 +1,14 @@
+2025-06-10 15:01
+Lucca Labattaglia
+GITHUB: theargcoder
+
+PRE:
+  I am undecided if using recursion or DP is more optimal.
+  it would make more sense to use recursion with memorization...
+  will see..
+
+POST:
+  Ended up been DP.
+  fun problem
+
+theargcoder
