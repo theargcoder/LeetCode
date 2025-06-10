@@ -1,0 +1,11 @@
+2025-06-10 12:00
+Lucca Labattaglia
+GITHUB: theargcoder
+
+Not that hard, but technically 
+I used O(2*rowIndex) instead of O(rowIndex);
+but also Algorithm analisis says that constants 
+shouldn't be a part of big O notation so 
+we should be good :) 
+
+theargcoder
