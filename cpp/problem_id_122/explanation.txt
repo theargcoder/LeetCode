@@ -1,0 +1,16 @@
+
+Lucca Labattaglia
+GITHUB: theargcoder
+
+PRE:
+  this is a bit harder than expected...
+PRE 2:
+  OMG I think its just a sliding window problem....
+PRE 3:
+  I forgot about calculus.....
+
+POST:
+  well well I was OVER thinking it by a mile..
+
+
+theargcoder
