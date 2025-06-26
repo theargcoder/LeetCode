@@ -1,0 +1,20 @@
+2025-06-26 13:44
+Lucca Labattaglia
+GITHUB: theargcoder
+
+PRE:
+  suspecting more BFS....
+PRE 2:
+  NAAAA this is easy ASF
+PRE 3:
+  slightly more complicated than what i thought but 
+  might be able to do it using trees (binary ones)
+  but it would be O(n *log n)...
+
+POST:
+  Implemented a hypothetical O(n) solution....
+  BS the sort contigious O(n * log n) solution is 
+  5x faster bc of cache affinity......
+  BS!!
+
+theargcoder
