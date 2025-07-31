@@ -1,0 +1,13 @@
+2025-07-30 23:31
+Lucca Labattaglia
+GITHUB: theargcoder
+
+PRE:
+  INSTANTLY THINKING THAT ITS A 2 pointer problem.
+POST:
+  well well this is a horrible solution but whatever
+POST 2:
+  redid it with a stack and o boy its fast.
+
+
+theargcoder
