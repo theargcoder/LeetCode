@@ -1,0 +1,10 @@
+2025-08-04 02:33
+Lucca Labattaglia
+GITHUB: theargcoder
+
+well did the first implementation but took O(n) to access
+and update so remembered that linked lists do the deed
+but with the help of a map to guaranteee the O(1) access
+to a keys location on the queue.
+
+theargcoder
