@@ -1,0 +1,21 @@
+
+Lucca Labattaglia
+GITHUB: theargcoder
+
+PRE:
+  INSTANTLY DFS WITH MEMO
+
+  OR
+  TOP DOWN DP
+
+  OR EVEN
+
+  BOTTOM UP DP
+
+  WE will see....
+
+POST:
+  something like what I initially thought
+
+
+theargcoder
