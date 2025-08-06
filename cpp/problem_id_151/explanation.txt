@@ -1,0 +1,10 @@
+2025-08-06 18:35
+Lucca Labattaglia
+GITHUB: theargcoder
+
+Bruh my solution actually uses O(1) ish 
+/****    (2 * (10**4) (via reserve))       ***/
+all the other solutions use std::vectors and shit
+jesus
+
+theargcoder
