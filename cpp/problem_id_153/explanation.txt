@@ -1,0 +1,10 @@
+
+Lucca Labattaglia
+GITHUB: theargcoder
+
+PRE:
+  lit just binary search with extra steps
+POST:
+  I am such a genius that I scare myself sometimes
+
+theargcoder
