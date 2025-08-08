@@ -1,0 +1,18 @@
+2025-08-08 15:59
+Lucca Labattaglia
+GITHUB: theargcoder
+
+POST:
+  for LAZY:
+    since worst case would be O(n) anyways
+    might as well guarantee O(n)
+    it is what it is.
+  for MINE:
+    well its just handling repeats.
+    but kinda boring since had to submit 100
+    wrong versions to get it to work lol
+
+  I like LAZY since more redable.
+  but whatever
+
+theargcoder
