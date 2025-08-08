@@ -1,0 +1,18 @@
+2025-08-08 17:36
+Lucca Labattaglia
+GITHUB: theargcoder
+
+PRE:
+  I WILL SPEEDRUN THIS BS:
+  LOOK STARTING @ time 2025-08-08 17:21
+ 
+       AND DONE @ time 2025-08-08 17:27
+
+       5 min SPEEDRUN;
+
+POST:
+  the proposed LeetCode solution, although it uses O(1) space
+  my solution is O(m + n) but it fails to do O(1) space
+  since it uses O(n) or O(m) space;
+
+theargcoder
