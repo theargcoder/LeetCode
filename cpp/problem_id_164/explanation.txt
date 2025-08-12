@@ -1,0 +1,14 @@
+2025-08-12 01:27
+Lucca Labattaglia
+GITHUB: theargcoder
+
+so they call O(n) the same as O(k * n)
+so BS i've read DATASTRUCTURES AND ALGO BOOKs
+and I know in BIG O notation we drop constants
+but FUCK OFF K is a big deal here....
+specially since we are "comparing it" against
+O(n * log n).
+also its not O(n) memory its O(k * n)
+not worth it.
+
+theargcoder
