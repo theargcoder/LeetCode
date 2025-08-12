@@ -11,4 +11,7 @@ O(n * log n).
 also its not O(n) memory its O(k * n)
 not worth it.
 
+POST:
+  just for exercise I'll do a radix sort implementation
+
 theargcoder
