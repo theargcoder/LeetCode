@@ -1,0 +1,15 @@
+2025-08-18 21:51
+Lucca Labattaglia
+GITHUB: theargcoder
+
+PRE:
+  looking at the 1'st 100 fatorials (1-100)!
+  I notice that every 5 factorials (1-5-10-15-20-25-...)!
+  it adds a 0...
+
+POST:
+  I was trying to build the solution foward but 
+  backwards makes its much easier 
+  WOW I GOT IT!!!!
+
+theargcoder
