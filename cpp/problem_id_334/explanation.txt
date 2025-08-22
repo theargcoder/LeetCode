@@ -1,0 +1,15 @@
+2025-08-22 14:36
+Lucca Labattaglia
+GITHUB: theargcoder
+
+PRE:
+  EASY ASF
+  I WILL SPEEDRUN IT
+  time START : 2025-08-22 13:23
+
+  SIKEEE
+  took like 1 hour and couldnt make it with O(1)
+  space
+  had to resort to O(n) space
+
+theargcoder
