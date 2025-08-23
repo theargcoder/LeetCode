@@ -1,0 +1,9 @@
+2025-08-23 01:02
+Lucca Labattaglia
+GITHUB: theargcoder
+
+did it
+forgot about time complexity and submitted a O(n^2)
+solution like a psycho LOL
+
+theargcoder
