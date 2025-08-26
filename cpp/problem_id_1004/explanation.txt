@@ -1,0 +1,9 @@
+2025-08-26 02:05
+Lucca Labattaglia
+GITHUB: theargcoder
+
+HAHAHAHHA
+I managed to make sliding window O(n^2) LOL
+jesus christ
+
+theargcoder
