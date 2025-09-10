@@ -15,15 +15,15 @@ Statistics
 
 *Problems solved:*   
 
-> `178`  out of `3656`
+> `190`  out of `3677`
 
 *Acceptance:*
 
-> `65.62%`
+> `66.08%`
 
 *Rank:*
 
-> `753,933`
+> `708,679`
 
 More Information
 -----------------
