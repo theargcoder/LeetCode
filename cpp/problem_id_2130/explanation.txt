@@ -1,0 +1,8 @@
+2025-09-24 12:38
+Lucca Labattaglia
+GITHUB: theargcoder
+
+easy but double ptr method is doing too much imo.
+stack is easier to read and pretty efficient.
+
+theargcoder
