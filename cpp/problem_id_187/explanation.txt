@@ -1,0 +1,8 @@
+2026-07-21 21:54
+Lucca Labattaglia
+GITHUB: theargcoder
+
+Interesting problem, definetly harder than expected
+fun to optimize once main comp function was figured out.
+
+theargcoder
