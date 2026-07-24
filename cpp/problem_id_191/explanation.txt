@@ -1,0 +1,8 @@
+2026-07-23 20:50
+Lucca Labattaglia
+GITHUB: theargcoder
+
+there is literraly an x86_64 and aarch64 instruction for this problem;
+its a 1 instruction problem ...
+
+theargcoder
