@@ -1,0 +1,9 @@
+2026-07-24 12:04
+Lucca Labattaglia
+GITHUB: theargcoder
+
+2 wrong submission due to a '\b' or ' ' is wild work
+anyhow gucci problem
+everyone used awk tho...
+
+theargcoder
