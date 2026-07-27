@@ -1,16 +1,25 @@
-create or replace function nthhighestsalary(n int)
-returns table(salary int)
-as
-    $$
+CREATE OR REPLACE FUNCTION nthhighestsalary (n int)
+    RETURNS TABLE (
+        salary int
+    )
+    AS $$
 BEGIN
     IF n <= 0 THEN
-      RETURN; 
+        RETURN;
     END IF;
-
     RETURN QUERY
-    SELECT e.salary
-    FROM employee AS e GROUP BY e.salary HAVING COUNT(DISTINCT e.salary) = 1 ORDER BY e.salary DESC LIMIT 1 OFFSET n - 1; 
+    SELECT
+        e.salary
+    FROM
+        employee AS e
+    GROUP BY
+        e.salary
+    HAVING
+        COUNT(DISTINCT e.salary) = 1
+ORDER BY
+    e.salary DESC
+LIMIT 1 OFFSET n - 1;
 END;
 $$
-language plpgsql
-;
+LANGUAGE plpgsql;
+
