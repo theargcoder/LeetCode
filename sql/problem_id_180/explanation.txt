@@ -1,0 +1,7 @@
+2026-07-27 17:02
+Lucca Labattaglia
+GITHUB: theargcoder
+
+I didn't know that SQL had a LAG COMMAND, regardless i did some tinkering and got it working!!
+
+theargcoder
