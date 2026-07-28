@@ -1,0 +1,8 @@
+2026-07-27 22:41
+Lucca Labattaglia
+GITHUB: theargcoder
+
+I submitted the same query 2 times and the time difference was 100 ms???? so maybe my solutions arent that bad after all 
+just their testing enviroments are inconsistent ASF in sql witch is understandable i guess.
+
+theargcoder
