@@ -1,0 +1,7 @@
+2026-07-29 15:55
+Lucca Labattaglia
+GITHUB: theargcoder
+
+easy, added delete to prevent memleaks
+
+theargcoder
