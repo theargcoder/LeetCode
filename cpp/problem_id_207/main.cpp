@@ -1,3 +1,255 @@
+#include <array>
+#include <vector>
+
+// new 0 ms solution !!!
+#define MAX_COURSES 2000
+
+class Solution
+{
+private:
+  std::array<std::vector<int>, MAX_COURSES + 1> father_child;
+  std::array<bool, MAX_COURSES + 1> used, visited, recursed;
+
+public:
+  bool canFinish(const int &numCourses, const std::vector<std::vector<int>> &prerequisites)
+  {
+    const unsigned size = prerequisites.size();
+
+    if(size == 0)
+    {
+      return true;
+    }
+
+    father_child.fill({});
+    used.fill(false);
+
+    for(const auto &vec : prerequisites)
+    {
+      const int curr_val = vec[0];
+      const int prerequisit = vec[1];
+
+      if(curr_val == prerequisit)
+      {
+        return false;
+      }
+
+      used[curr_val] = used[prerequisit] = true;
+
+      father_child[prerequisit].push_back(curr_val);
+    }
+
+    visited.fill(false);
+    recursed.fill(false);
+
+    for(int i = 0; i <= numCourses; i++)
+    {
+      if(!used[i])
+      {
+        continue;
+      }
+      if(!visited[i] && find_loops(i))
+      {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+private:
+  bool find_loops(const int &num)
+  {
+    if(recursed[num])
+    {
+      return true; // cycle
+    }
+    if(visited[num])
+    {
+      return false; // no cycle
+    }
+
+    visited[num] = true;
+    recursed[num] = true;
+
+    for(const auto &num : father_child[num])
+    {
+      if(find_loops(num))
+      {
+        return true;
+      }
+    }
+
+    recursed[num] = false;
+    return false;
+  }
+};
+
+/*
+class Solution
+{
+private:
+  std::array<std::vector<int>, MAX_COURSES + 1> num_depe;
+  std::array<bool, MAX_COURSES + 1> used, visited, recursed;
+
+public:
+  bool canFinish(const int &numCourses, const std::vector<std::vector<int>> &prerequisites)
+  {
+    const unsigned size = prerequisites.size();
+
+    if(size == 0)
+    {
+      return true;
+    }
+
+    num_depe.fill({});
+    used.fill(false);
+
+    for(const auto &vec : prerequisites)
+    {
+      const int curr_val = vec[0];
+      const int prerequisit = vec[1];
+
+      if(curr_val == prerequisit)
+      {
+        return false;
+      }
+
+      used[curr_val] = used[prerequisit] = true;
+
+      num_depe[curr_val].push_back(prerequisit);
+    }
+
+    visited.fill(false);
+    recursed.fill(false);
+
+    for(int i = 0; i <= numCourses; i++)
+    {
+      if(!used[i])
+      {
+        continue;
+      }
+      if(!visited[i] && find_loops(i))
+      {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+private:
+  bool find_loops(const int &num)
+  {
+    if(recursed[num])
+    {
+      return true; // cycle
+    }
+    if(visited[num])
+    {
+      return false; // no cycle
+    }
+
+    visited[num] = true;
+    recursed[num] = true;
+
+    for(const auto &num : num_depe[num])
+    {
+      if(find_loops(num))
+      {
+        return true;
+      }
+    }
+
+    recursed[num] = false;
+    return false;
+  }
+};
+*/
+
+/* 1ms solution
+#include <vector>
+
+class Solution
+{
+private:
+  std::vector<std::vector<int>> num_depe;
+  std::vector<bool> used;
+
+public:
+  bool canFinish(const int &numCourses, const std::vector<std::vector<int>> &prerequisites)
+  {
+    const unsigned size = prerequisites.size();
+
+    if(size == 0)
+    {
+      return true;
+    }
+
+    num_depe = { static_cast<size_t>(numCourses), std::vector<int>{} };
+    used = std::vector<bool>(static_cast<size_t>(numCourses), false);
+
+    for(const auto &vec : prerequisites)
+    {
+      const int curr_val = vec[0];
+      const int prerequisit = vec[1];
+
+      if(curr_val == prerequisit)
+      {
+        return false;
+      }
+
+      used[curr_val] = used[prerequisit] = true;
+
+      num_depe[curr_val].push_back(prerequisit);
+    }
+
+    std::vector<bool> visited(numCourses, false), recursed(numCourses, false);
+
+    for(int i = 0; i <= numCourses; i++)
+    {
+      if(!used[i])
+      {
+        continue;
+      }
+      if(!visited[i] && find_loops(visited, recursed, i))
+      {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+private:
+  bool find_loops(std::vector<bool> &visited, std::vector<bool> &recursed, const int &num)
+  {
+    if(recursed[num])
+    {
+      return true; // cycle
+    }
+    if(visited[num])
+    {
+      return false; // no cycle
+    }
+
+    visited[num] = true;
+    recursed[num] = true;
+
+    for(const auto ptr : num_depe[num])
+    {
+      if(find_loops(visited, recursed, ptr))
+      {
+        return true;
+      }
+    }
+
+    recursed[num] = false;
+    return false;
+  }
+};
+*/
+
+/*
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
@@ -134,3 +386,4 @@ private:
     return build_graph(prereq, size, i + 1);
   }
 };
+*/

@@ -1,0 +1,8 @@
+2026-08-16 21:45
+Lucca Labattaglia
+GITHUB: theargcoder
+
+holy cow this was tedious, very interesting problem!!! 
+definetly a great one to learn graphs, dfs and or bfs
+
+theargcoder
