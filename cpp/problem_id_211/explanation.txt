@@ -4,4 +4,6 @@ GITHUB: theargcoder
 
 prefix tree with extra steps basically
 
+update: optimized it bc why not!!!
+
 theargcoder
