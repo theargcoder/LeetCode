@@ -1,17 +1,15 @@
 #include <array>
-#include <cassert>
 #include <memory>
 #include <string>
-
-struct node
-{
-  bool end = false;
-  std::array<std::unique_ptr<node>, 'z' - 'a' + 1> map{};
-};
 
 class Trie
 {
 private:
+  struct node
+  {
+    bool end = false;
+    std::array<std::unique_ptr<node>, 'z' - 'a' + 1> map{};
+  };
   std::unique_ptr<node> head = std::make_unique<node>();
 
 public:
