@@ -1,0 +1,13 @@
+2026-08-19 14:12
+Lucca Labattaglia
+GITHUB: theargcoder
+
+well had to read about a palindrome algorithm ...  
+manchers algorithm ...
+https://www.geeksforgeeks.org/dsa/manachers-algorithm-linear-time-longest-palindromic-substring-part-1/
+
+so dumb :/
+
+but the concept its similar to my TLE version just much faster ...
+
+theargcoder
