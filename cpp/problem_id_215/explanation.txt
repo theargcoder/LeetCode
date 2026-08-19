@@ -1,0 +1,17 @@
+2026-08-19 15:24
+Lucca Labattaglia
+GITHUB: theargcoder
+
+so normies are out here using quickselect like the partition() recursive call in loop is free or whatever
+also in worst case is O(n^2) ...
+and recursive stack uses MUCH more memory than my simple array :)
+in massive arrays my solution (grown in size ofc) would beat any since 
+recurison would stack overflow under normal recursion (8 Mbytes) limits!!
+HA!
+
+my solution could hypothetically be shrunk a lot since you could create a hash like table 
+and only when capacity is at ~50% (to avoid collisions) increase its size; 
+It would be more expensive in CPU time but would work for sure.
+
+
+theargcoder
