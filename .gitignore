@@ -1,6 +1,7 @@
 # NVIM stuff
 main
 *.DS_Store
+*.dSYM/
 
 # macOS system files
 .DS_Store
