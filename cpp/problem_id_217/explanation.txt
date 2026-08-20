@@ -1,0 +1,8 @@
+2026-08-19 18:18
+Lucca Labattaglia
+GITHUB: theargcoder
+
+I mean we know its an easy but finding a faster solution is actually fun!!! 
+kinda did my own hashtable for this !!
+
+theargcoder
