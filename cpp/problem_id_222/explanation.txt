@@ -1,0 +1,9 @@
+2026-08-25 15:09
+Lucca Labattaglia
+GITHUB: theargcoder
+
+had a hard time with the sub O(n) time but once i saw a solution it made sense
+only counting edges and counting every node in non perfect trees THEN makes is sub O(n)
+interesting, wouldve never figured it out by myself.
+
+theargcoder
