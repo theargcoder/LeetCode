@@ -1,0 +1,9 @@
+2026-08-28 23:07
+Lucca Labattaglia
+GITHUB: theargcoder
+
+the hardest part was remembering that * and / have same precedence 
+BUT ARE EVALUATED LEFT -> RIGHT; the LEFT -> RIGHT part had me scratching my head LOL
+anyhow just another parser once again.
+
+theargcoder
