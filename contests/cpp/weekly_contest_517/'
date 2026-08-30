@@ -1,0 +1,26 @@
+#include <vector>
+
+class Solution
+{
+public:
+  int minOperations(const std::vector<int> &nums, const int &sum)
+  {
+    const size_t size = nums.size();
+  }
+
+private:
+  bool dfs(const std::vector<int> &nums, const int &sum, const int idx, const int ops)
+  {
+    if(idx > nums.size())
+    {
+      return false;
+    }
+
+    int curr = nums[idx];
+
+    while(curr != 0)
+    {
+      curr >>= 1;
+    }
+  }
+};
