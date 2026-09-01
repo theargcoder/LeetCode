@@ -1,0 +1,10 @@
+2026-08-31 19:38
+Lucca Labattaglia
+GITHUB: theargcoder
+
+I mean wtf I am I suposed to be a fild medalist to solve leetcodes fuck off.
+had to google the solution it was killing me
+and the DP solution its just recursion with memo why is this even marked DP
+anyhow still have a lot to do if i want to get better at DP problems
+
+theargcoder
