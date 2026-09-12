@@ -1,0 +1,8 @@
+2026-09-12 11:01
+Lucca Labattaglia
+github -> theargcoder
+
+OFC I solve Q1 and Q2 in 14 minutes, and since Q3 is DP and I love DP  so much (FUCK DP); I couldn't solve it :)
+
+:/
+
