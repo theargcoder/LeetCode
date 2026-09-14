@@ -1,0 +1,7 @@
+2026-09-14 14:54
+Lucca Labattaglia
+GITHUB: theargcoder
+
+easy; but doing it in O(n) time and O(1) space is easy too but the fact that the LinkedList ends up been altered can be problematic...
+
+theargcoder
