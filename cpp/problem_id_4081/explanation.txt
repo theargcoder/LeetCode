@@ -1,0 +1,8 @@
+2026-10-14 15:00
+Lucca Labattaglia
+GITHUB: theargcoder
+
+DP, sieve, greedy, I mean there were only missing recursion and the set is complete...
+jesus and 1'700+ people solved it DURING contest :0
+
+theargcoder
