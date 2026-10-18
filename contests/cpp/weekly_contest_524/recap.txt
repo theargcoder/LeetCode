@@ -1,0 +1,8 @@
+2026-10-18 12:08
+Lucca Labattaglia
+github -> theargcoder
+
+Q1 and Q2 no problem; Q3 couldn't understand the problem :/ I didn't assume the colors[i] is the number of the e_i and v_i :( badly written imo.
+tried Q4 but no good;
+
+will get em next time
